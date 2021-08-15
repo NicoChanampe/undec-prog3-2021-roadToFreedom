@@ -1,5 +1,8 @@
 package dominio;
 
+import exceptions.exceptionPersona.ExceptionPersona;
+import exceptions.exceptionPersona.ExceptionPersonaAtributoNulo;
+
 import java.time.LocalDate;
 
 public class Persona {
@@ -13,7 +16,10 @@ public class Persona {
     public Double peso;
 
 
-    public static Persona factoryPersona(int id, String nombre, String apellido, String club, LocalDate fecha, String dni, Double altura, Double peso) {
+    public static Persona factoryPersona(int id, String nombre, String apellido, String club, LocalDate fecha, String dni, Double altura, Double peso) throws ExceptionPersona {
+        if(nombre == null)
+            throw new ExceptionPersonaAtributoNulo("El nombre no puede ser nulo");
+
         return new Persona(id, nombre, apellido, club, fecha, dni, altura, peso);
     }
 
