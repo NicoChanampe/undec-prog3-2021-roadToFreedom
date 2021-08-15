@@ -41,12 +41,23 @@ public class TestClasePersona {
 
     @Order(3)
     @Test
-    public void test02_creacionPersona_personaApellidoNulo() {
+    public void test03_creacionPersona_personaApellidoNulo() {
         //arrange
         LocalDate fechaNacimiento = LocalDate.parse("1999-01-20");
         //assert
         assertThrows(ExceptionPersonaAtributoNulo.class, () -> {
             Persona nuevaPersona = Persona.factoryPersona(2, "Belen Sabrina", null, "River", fechaNacimiento, "46323162", 1.52, 56.31);
+        });
+    }
+
+    @Order(4)
+    @Test
+    public void test04_creacionPersona_personaDNINulo() {
+        //arrange
+        LocalDate fechaNacimiento = LocalDate.parse("1999-01-20");
+        //assert
+        assertThrows(ExceptionPersonaAtributoNulo.class, () -> {
+            Persona nuevaPersona = Persona.factoryPersona(1, "Franco David", "Cardozo", "Racing", fechaNacimiento, null, 1.73, 56.31);
         });
     }
 

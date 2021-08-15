@@ -21,6 +21,8 @@ public class Persona {
             throw new ExceptionPersonaAtributoNulo("El nombre no puede ser nulo");
         if(apellido == null)
             throw new ExceptionPersonaAtributoNulo("El apellido no puede ser nulo");
+        if(dni == null)
+            throw new ExceptionPersonaAtributoNulo("El DNI no puede ser nulo");
 
         return new Persona(id, nombre, apellido, club, fecha, dni, altura, peso);
     }
