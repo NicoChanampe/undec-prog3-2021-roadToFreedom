@@ -19,6 +19,8 @@ public class Persona {
     public static Persona factoryPersona(int id, String nombre, String apellido, String club, LocalDate fecha, String dni, Double altura, Double peso) throws ExceptionPersona {
         if(nombre == null)
             throw new ExceptionPersonaAtributoNulo("El nombre no puede ser nulo");
+        if(apellido == null)
+            throw new ExceptionPersonaAtributoNulo("El apellido no puede ser nulo");
 
         return new Persona(id, nombre, apellido, club, fecha, dni, altura, peso);
     }
