@@ -73,5 +73,16 @@ public class TestClasePersona {
         });
     }
 
+    @Order(6)
+    @Test
+    public void test06_creacionPersona_personaNombreVacio() {
+        //arrange
+        LocalDate fechaNacimiento = LocalDate.parse("1999-01-20");
+        //assert
+        assertThrows(ExceptionPersonaAtributoVacio.class, () -> {
+            Persona nuevaPersona = Persona.factoryPersona(1, "", "Cardozo", "Racing", fechaNacimiento, "89753122", 1.73, 56.31);
+        });
+    }
+
 
 }
