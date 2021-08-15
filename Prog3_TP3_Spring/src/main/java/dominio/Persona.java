@@ -2,6 +2,7 @@ package dominio;
 
 import exceptions.exceptionPersona.ExceptionPersona;
 import exceptions.exceptionPersona.ExceptionPersonaAtributoNulo;
+import exceptions.exceptionPersona.ExceptionPersonaAtributoVacio;
 
 import java.time.LocalDate;
 
@@ -23,6 +24,9 @@ public class Persona {
             throw new ExceptionPersonaAtributoNulo("El apellido no puede ser nulo");
         if(dni == null)
             throw new ExceptionPersonaAtributoNulo("El DNI no puede ser nulo");
+        if(dni == "")
+            throw new ExceptionPersonaAtributoVacio("El DNI no puede estar sin completar");
+
 
         return new Persona(id, nombre, apellido, club, fecha, dni, altura, peso);
     }

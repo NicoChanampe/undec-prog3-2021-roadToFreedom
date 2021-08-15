@@ -3,6 +3,7 @@ package testDominio;
 import dominio.Persona;
 import exceptions.exceptionPersona.ExceptionPersona;
 import exceptions.exceptionPersona.ExceptionPersonaAtributoNulo;
+import exceptions.exceptionPersona.ExceptionPersonaAtributoVacio;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -58,6 +59,17 @@ public class TestClasePersona {
         //assert
         assertThrows(ExceptionPersonaAtributoNulo.class, () -> {
             Persona nuevaPersona = Persona.factoryPersona(1, "Franco David", "Cardozo", "Racing", fechaNacimiento, null, 1.73, 56.31);
+        });
+    }
+
+    @Order(5)
+    @Test
+    public void test05_creacionPersona_personaDNIVacio() {
+        //arrange
+        LocalDate fechaNacimiento = LocalDate.parse("1999-01-20");
+        //assert
+        assertThrows(ExceptionPersonaAtributoVacio.class, () -> {
+            Persona nuevaPersona = Persona.factoryPersona(1, "Franco David", "Cardozo", "Racing", fechaNacimiento, "", 1.73, 56.31);
         });
     }
 
