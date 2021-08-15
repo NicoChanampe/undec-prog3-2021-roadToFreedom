@@ -28,6 +28,8 @@ public class Persona {
             throw new ExceptionPersonaAtributoVacio("El DNI no puede estar sin completar");
         if(nombre == "")
             throw new ExceptionPersonaAtributoVacio("El campo nombre no puede quedar vacio");
+        if(apellido == "")
+            throw new ExceptionPersonaAtributoVacio("El campo apellido no puede quedar vacio");
 
         return new Persona(id, nombre, apellido, club, fecha, dni, altura, peso);
     }
