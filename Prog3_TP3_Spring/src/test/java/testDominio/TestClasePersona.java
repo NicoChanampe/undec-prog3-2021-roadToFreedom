@@ -22,7 +22,7 @@ public class TestClasePersona {
         //arrange
         LocalDate fechaNacimiento = LocalDate.parse("1999-01-20");
         //act
-        Persona nuevaPersona = Persona.factoryPersona(1,"Franco David","Cardozo","Racing",fechaNacimiento,"89753122",1.73,56.31);
+        Persona nuevaPersona = Persona.factoryPersona(1, "Franco David", "Cardozo", "Racing", fechaNacimiento, "89753122", 1.73, 56.31);
         //assert
         assertNotNull(nuevaPersona);
     }
@@ -158,4 +158,16 @@ public class TestClasePersona {
             Persona nuevaPersona = Persona.factoryPersona(1, "Franco David", "Cardozo", "Racing", fechaNacimiento, "89312124", -1.73, 56.31);
         });
     }
+
+    @Order(14)
+    @Test
+    public void test14_creacionPersona_personaPesoNegativo() {
+        //arrange
+        LocalDate fechaNacimiento = LocalDate.parse("1999-01-20");
+        //assert
+        assertThrows(ExceptionPersonaPesoErroneo.class, () -> {
+            Persona nuevaPersona = Persona.factoryPersona(1, "Franco David", "Cardozo", "Racing", fechaNacimiento, "89312124", 1.73, -56.31);
+        });
+    }
+
 }

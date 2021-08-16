@@ -38,6 +38,8 @@ public class Persona {
             throw new ExceptionPersonaAlturaErronea("La altura no puede ser cero");
         if(altura < 0)
             throw new ExceptionPersonaAlturaErronea("La altura no puede ser negativa");
+        if(peso < 0)
+            throw new ExceptionPersonaPesoErroneo("El peso no puede ser negativo");
 
         return new Persona(id, nombre, apellido, club, fecha, dni, altura, peso);
     }
