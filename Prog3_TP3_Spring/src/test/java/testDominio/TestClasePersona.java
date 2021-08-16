@@ -4,6 +4,7 @@ import dominio.Persona;
 import exceptions.exceptionPersona.ExceptionPersona;
 import exceptions.exceptionPersona.ExceptionPersonaAtributoNulo;
 import exceptions.exceptionPersona.ExceptionPersonaAtributoVacio;
+import exceptions.exceptionPersona.ExceptionPersonaDniMalEscrito;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -95,4 +96,47 @@ public class TestClasePersona {
         });
     }
 
+    @Order(8)
+    @Test
+    public void test08_creacionPersona_personaDniConDigitoDeMas() {
+        //arrange
+        LocalDate fechaNacimiento = LocalDate.parse("1999-01-20");
+        //assert
+        assertThrows(ExceptionPersonaDniMalEscrito.class, () -> {
+            Persona nuevaPersona = Persona.factoryPersona(1, "Franco David", "Cardozo", "Racing", fechaNacimiento, "8975312246", 1.73, 56.31);
+        });
+    }
+
+    @Order(9)
+    @Test
+    public void test09_creacionPersona_personaDNICorto() {
+        //arrange
+        LocalDate fechaNacimiento = LocalDate.parse("1999-01-20");
+        //assert
+        assertThrows(ExceptionPersonaDniMalEscrito.class, () -> {
+            Persona nuevaPersona = Persona.factoryPersona(1, "Franco David", "Cardozo", "Racing", fechaNacimiento, "8931224", 1.73, 56.31);
+        });
+    }
+
+    @Order(10)
+    @Test
+    public void test10_creacionPersona_personaDNIConPuntos() {
+        //arrange
+        LocalDate fechaNacimiento = LocalDate.parse("1999-01-20");
+        //assert
+        assertThrows(ExceptionPersonaDniMalEscrito.class, () -> {
+            Persona nuevaPersona = Persona.factoryPersona(1, "Franco David", "Cardozo", "Racing", fechaNacimiento, "89.312.124", 1.73, 56.31);
+        });
+    }
+
+    @Order(11)
+    @Test
+    public void test11_creacionPersona_personaDNIConLetra() {
+        //arrange
+        LocalDate fechaNacimiento = LocalDate.parse("1999-01-20");
+        //assert
+        assertThrows(ExceptionPersonaDniMalEscrito.class, () -> {
+            Persona nuevaPersona = Persona.factoryPersona(1, "Franco David", "Cardozo", "Racing", fechaNacimiento, "8t312124", 1.73, 56.31);
+        });
+    }
 }

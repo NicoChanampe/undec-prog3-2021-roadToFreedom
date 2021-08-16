@@ -3,6 +3,7 @@ package dominio;
 import exceptions.exceptionPersona.ExceptionPersona;
 import exceptions.exceptionPersona.ExceptionPersonaAtributoNulo;
 import exceptions.exceptionPersona.ExceptionPersonaAtributoVacio;
+import exceptions.exceptionPersona.ExceptionPersonaDniMalEscrito;
 
 import java.time.LocalDate;
 
@@ -30,8 +31,22 @@ public class Persona {
             throw new ExceptionPersonaAtributoVacio("El campo nombre no puede quedar vacio");
         if(apellido == "")
             throw new ExceptionPersonaAtributoVacio("El campo apellido no puede quedar vacio");
+        if(dni.length() > 9)
+            throw new ExceptionPersonaDniMalEscrito("El dni no puede tener mas de 10 digitos");
+        if(dni.length() < 8)
+            throw new ExceptionPersonaDniMalEscrito("El dni minimo debe tener 8 digitos");
+        if(!validarDni(dni))
+            throw new ExceptionPersonaDniMalEscrito("El dni solo debe contener numeros");
 
         return new Persona(id, nombre, apellido, club, fecha, dni, altura, peso);
+    }
+
+    private static boolean validarDni(String dni) {
+        for(int i = 0;i<dni.length();i++){
+            if(dni.codePointAt(i) < 48 || dni.codePointAt(i) > 57)
+                return false;
+        }
+        return true;
     }
 
     private Persona (int id, String nombre, String apellido, String club, LocalDate fecha, String dni, Double altura, Double peso){
