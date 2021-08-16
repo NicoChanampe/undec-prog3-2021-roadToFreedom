@@ -1,9 +1,6 @@
 package dominio;
 
-import exceptions.exceptionPersona.ExceptionPersona;
-import exceptions.exceptionPersona.ExceptionPersonaAtributoNulo;
-import exceptions.exceptionPersona.ExceptionPersonaAtributoVacio;
-import exceptions.exceptionPersona.ExceptionPersonaDniMalEscrito;
+import exceptions.exceptionPersona.*;
 
 import java.time.LocalDate;
 
@@ -37,6 +34,10 @@ public class Persona {
             throw new ExceptionPersonaDniMalEscrito("El dni minimo debe tener 8 digitos");
         if(!validarDni(dni))
             throw new ExceptionPersonaDniMalEscrito("El dni solo debe contener numeros");
+        if(altura == 0)
+            throw new ExceptionPersonaAlturaErronea("La altura no puede ser cero");
+        if(altura < 0)
+            throw new ExceptionPersonaAlturaErronea("La altura no puede ser negativa");
 
         return new Persona(id, nombre, apellido, club, fecha, dni, altura, peso);
     }

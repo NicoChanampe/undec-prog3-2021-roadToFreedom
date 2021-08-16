@@ -1,10 +1,7 @@
 package testDominio;
 
 import dominio.Persona;
-import exceptions.exceptionPersona.ExceptionPersona;
-import exceptions.exceptionPersona.ExceptionPersonaAtributoNulo;
-import exceptions.exceptionPersona.ExceptionPersonaAtributoVacio;
-import exceptions.exceptionPersona.ExceptionPersonaDniMalEscrito;
+import exceptions.exceptionPersona.*;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -137,6 +134,28 @@ public class TestClasePersona {
         //assert
         assertThrows(ExceptionPersonaDniMalEscrito.class, () -> {
             Persona nuevaPersona = Persona.factoryPersona(1, "Franco David", "Cardozo", "Racing", fechaNacimiento, "8t312124", 1.73, 56.31);
+        });
+    }
+
+    @Order(12)
+    @Test
+    public void test12_creacionPersona_personaAlturaCero() {
+        //arrange
+        LocalDate fechaNacimiento = LocalDate.parse("1999-01-20");
+        //assert
+        assertThrows(ExceptionPersonaAlturaErronea.class, () -> {
+            Persona nuevaPersona = Persona.factoryPersona(1, "Franco David", "Cardozo", "Racing", fechaNacimiento, "89312124", 0.0, 56.31);
+        });
+    }
+
+    @Order(13)
+    @Test
+    public void test13_creacionPersona_personaAlturaNegativa() {
+        //arrange
+        LocalDate fechaNacimiento = LocalDate.parse("1999-01-20");
+        //assert
+        assertThrows(ExceptionPersonaAlturaErronea.class, () -> {
+            Persona nuevaPersona = Persona.factoryPersona(1, "Franco David", "Cardozo", "Racing", fechaNacimiento, "89312124", -1.73, 56.31);
         });
     }
 }
