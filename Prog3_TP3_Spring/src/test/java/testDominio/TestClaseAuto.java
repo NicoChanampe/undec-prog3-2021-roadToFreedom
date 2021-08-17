@@ -1,6 +1,8 @@
 package testDominio;
 
 import dominio.Auto;
+import exceptions.exceptionAuto.ExceptionAuto;
+import exceptions.exceptionAuto.ExceptionAutoAtributoNulo;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -15,8 +17,16 @@ import static org.junit.jupiter.api.Assertions.*;
 public class TestClaseAuto {
     @Order(1)
     @Test
-    public void test01_crearAutoCorrectamente(){
+    public void test01_crearAutoCorrectamente()throws ExceptionAuto {
         Auto nuevoAuto = Auto.factoryAuto("Fiat","147","Blanco",1.1,"XYZ 134",3,1996);
         assertNotNull(nuevoAuto);
+    }
+
+    @Order(2)
+    @Test
+    public void test02_excepcionAuto_marcaNula(){
+        assertThrows(ExceptionAutoAtributoNulo.class, ()-> {
+            Auto nuevoAuto = Auto.factoryAuto(null,"147","Blanco",1.1,"XYZ 134",3,1996);
+        });
     }
 }

@@ -1,5 +1,8 @@
 package dominio;
 
+import exceptions.exceptionAuto.ExceptionAuto;
+import exceptions.exceptionAuto.ExceptionAutoAtributoNulo;
+
 public class Auto {
     private String marca;
     private String modelo;
@@ -9,7 +12,9 @@ public class Auto {
     private Integer cantidadPuertas;
     private Integer añoFabricacion;
 
-    public static Auto factoryAuto(String marca, String modelo, String color, double cilindrada, String patente, int puertas, int año) {
+    public static Auto factoryAuto(String marca, String modelo, String color, double cilindrada, String patente, int puertas, int año)throws ExceptionAuto {
+        if(marca == null)
+            throw new ExceptionAutoAtributoNulo("La marca no puede ser nula");
         return new Auto(marca, modelo, color, cilindrada, patente, puertas, año);
     }
 
