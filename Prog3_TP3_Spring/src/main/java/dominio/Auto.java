@@ -2,6 +2,7 @@ package dominio;
 
 import exceptions.exceptionAuto.ExceptionAuto;
 import exceptions.exceptionAuto.ExceptionAutoAtributoNulo;
+import exceptions.exceptionAuto.ExceptionAutoAtributoVacia;
 
 public class Auto {
     private String marca;
@@ -15,10 +16,16 @@ public class Auto {
     public static Auto factoryAuto(String marca, String modelo, String color, double cilindrada, String patente, int puertas, int año)throws ExceptionAuto {
         if(marca == null)
             throw new ExceptionAutoAtributoNulo("La marca no puede ser nula");
+        if (marca == "")
+            throw new ExceptionAutoAtributoVacia("El campo marca no puede quedar vacio");
         if(modelo == null)
             throw new ExceptionAutoAtributoNulo("El modelo no puede ser nulo");
+        if (modelo == "")
+            throw new ExceptionAutoAtributoVacia("El campo modelo no puede quedar vacio");
         if(color == null)
             throw new ExceptionAutoAtributoNulo("El color no puede ser nulo");
+        if(patente == null)
+            throw new ExceptionAutoAtributoNulo("La patente no puede ser nula");
 
         return new Auto(marca, modelo, color, cilindrada, patente, puertas, año);
     }
