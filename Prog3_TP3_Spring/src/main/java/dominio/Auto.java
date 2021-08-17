@@ -3,6 +3,7 @@ package dominio;
 import exceptions.exceptionAuto.ExceptionAuto;
 import exceptions.exceptionAuto.ExceptionAutoAtributoNulo;
 import exceptions.exceptionAuto.ExceptionAutoAtributoVacia;
+import exceptions.exceptionAuto.ExceptionAutoCilindradaNegativa;
 
 public class Auto {
     private String marca;
@@ -28,6 +29,8 @@ public class Auto {
             throw new ExceptionAutoAtributoNulo("La patente no puede ser nula");
         if(patente == "")
             throw new ExceptionAutoAtributoVacia("El campo patente no puede quedar vacio");
+        if (cilindrada < 0)
+            throw new ExceptionAutoCilindradaNegativa("El campo cilindrada no puede ser negativo");
 
         return new Auto(marca, modelo, color, cilindrada, patente, puertas, año);
     }
