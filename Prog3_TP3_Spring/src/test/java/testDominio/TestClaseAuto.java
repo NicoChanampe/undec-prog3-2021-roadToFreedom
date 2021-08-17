@@ -1,10 +1,7 @@
 package testDominio;
 
 import dominio.Auto;
-import exceptions.exceptionAuto.ExceptionAuto;
-import exceptions.exceptionAuto.ExceptionAutoAtributoNulo;
-import exceptions.exceptionAuto.ExceptionAutoAtributoVacia;
-import exceptions.exceptionAuto.ExceptionAutoCilindradaNegativa;
+import exceptions.exceptionAuto.*;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -85,6 +82,14 @@ public class TestClaseAuto {
     public void test09_excepcionAuto_cilindradaNegativa(){
         assertThrows(ExceptionAutoCilindradaNegativa.class, ()-> {
             Auto nuevoAuto = Auto.factoryAuto("Fiat","147","blanco",-1.1,"XTZ 123",3,1996);
+        });
+    }
+
+    @Order(10)
+    @Test
+    public void test10_excepcionAuto_cantidadInvalida_de_puertas(){
+        assertThrows(ExceptionAutoNumeroPuertasInvalido.class, ()-> {
+            Auto nuevoAuto = Auto.factoryAuto("Fiat","147","blanco",1.1,"XTZ 123",6,1996);
         });
     }
 }

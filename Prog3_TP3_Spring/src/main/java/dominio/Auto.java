@@ -1,9 +1,6 @@
 package dominio;
 
-import exceptions.exceptionAuto.ExceptionAuto;
-import exceptions.exceptionAuto.ExceptionAutoAtributoNulo;
-import exceptions.exceptionAuto.ExceptionAutoAtributoVacia;
-import exceptions.exceptionAuto.ExceptionAutoCilindradaNegativa;
+import exceptions.exceptionAuto.*;
 
 public class Auto {
     private String marca;
@@ -31,6 +28,8 @@ public class Auto {
             throw new ExceptionAutoAtributoVacia("El campo patente no puede quedar vacio");
         if (cilindrada < 0)
             throw new ExceptionAutoCilindradaNegativa("El campo cilindrada no puede ser negativo");
+        if(puertas != 3 || puertas != 5)
+            throw new ExceptionAutoNumeroPuertasInvalido("La cantidad ingresada de puertas es invalida (3 o 5)");
 
         return new Auto(marca, modelo, color, cilindrada, patente, puertas, año);
     }
