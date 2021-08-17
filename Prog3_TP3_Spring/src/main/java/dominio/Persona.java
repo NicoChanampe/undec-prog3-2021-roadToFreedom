@@ -62,4 +62,8 @@ public class Persona {
         this.altura = altura;
         this.peso = peso;
     }
+
+    public String getDni() {
+        return dni;
+    }
 }
