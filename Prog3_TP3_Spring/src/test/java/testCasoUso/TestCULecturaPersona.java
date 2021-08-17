@@ -39,9 +39,18 @@ public class TestCULecturaPersona {
         assertTrue(simularBusqueda.buscarPersona("89753122"));
     }
 
-  /*  @Order(2)
+    @Order(2)
     @Test
-    public void test02_busquedaPersona_personaNoExiste(){
+    public void test02_busquedaPersona_personaNoExiste() throws ExceptionPersona{
+        //Arrange
+        LocalDate fechaNacimiento = LocalDate.parse("1999-01-20");
+        Persona estaPersona = Persona.factoryPersona(1, "Franco David", "Cardozo", "Racing", fechaNacimiento, "89753122", 1.73, 56.31);
 
-    }*/
+        //Act
+        Mockito.when(ileerPersona.buscarPersonaPorDni("89753122")).thenReturn(false);
+
+        BuscarPersonaCU simularBusqueda = new BuscarPersonaCU(ileerPersona);
+        //Assert
+        assertFalse(simularBusqueda.buscarPersona("89753122"));
+    }
 }
