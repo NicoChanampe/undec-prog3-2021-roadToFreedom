@@ -92,4 +92,16 @@ public class TestClaseAuto {
             Auto nuevoAuto = Auto.factoryAuto("Fiat","147","blanco",1.1,"XTZ 123",6,1996);
         });
     }
+
+    @Order(11)
+    @Test
+    public void test11_excepcionAuto_añoInvalido(){
+        assertThrows(ExceptionAutoAñoInvalido.class, ()-> {
+            Auto nuevoAuto = Auto.factoryAuto("Fiat","147","blanco",1.1,"XTZ 123",5,1613);
+        });
+
+        assertThrows(ExceptionAutoAñoInvalido.class, ()-> {
+            Auto nuevoAuto = Auto.factoryAuto("Fiat","147","blanco",1.1,"XTZ 123",5,4160);
+        });
+    }
 }
