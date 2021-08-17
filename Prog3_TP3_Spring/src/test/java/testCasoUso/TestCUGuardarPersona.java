@@ -4,6 +4,7 @@ import casosDeUso.BuscarPersonaCU;
 import casosDeUso.GuardarPersonaCU;
 import dominio.Persona;
 import exceptions.exceptionPersona.ExceptionPersona;
+import exceptions.exceptionPersona.ExceptionPersonaExiste;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -41,6 +42,23 @@ public class TestCUGuardarPersona {
 
         //assert
         assertTrue(simularGuardarPeople.cargarPersona(nuevaPersona));
+    }
 
+    @Order(2)
+    @Test
+    public void test02_guardarPersona_personaExiste_lanzaExcepcionPersonaExiste()throws ExceptionPersona{
+        //Arrange
+        LocalDate fechaNacimiento = LocalDate.parse("1999-01-20");
+        Persona nuevaPersona = Persona.factoryPersona(1, "Franco David", "Cardozo", "Racing", fechaNacimiento, "89753122", 1.73, 56.31);
+        GuardarPersonaCU simularGuardarPeople = new GuardarPersonaCU(iGuardarPersona, iLeerPersona);
+
+        //Act
+        Mockito.when(iLeerPersona.buscarPersonaPorDni("89753122")).thenReturn(true);
+        Mockito.verify(iGuardarPersona,Mockito.never()).guardarPersona(nuevaPersona);
+
+        //Assert
+        assertThrows(ExceptionPersonaExiste.class, () -> {
+           simularGuardarPeople.cargarPersona(nuevaPersona);
+        });
     }
 }
