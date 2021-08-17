@@ -48,4 +48,7 @@ public class Auto {
         this.añoFabricacion = año;
     }
 
+    public String getPatente() {
+        return this.patente;
+    }
 }

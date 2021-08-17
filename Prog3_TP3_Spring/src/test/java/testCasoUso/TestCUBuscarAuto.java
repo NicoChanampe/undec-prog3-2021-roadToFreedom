@@ -21,7 +21,7 @@ public class TestCUBuscarAuto {
 
     @Order(1)
     @Test
-    public void test01_buscarAuto_autoExiste_y_esLeido(){
+    public void test01_buscarAuto_autoExiste(){
         BuscarAutoCU unaBusqueda = new BuscarAutoCU(iBuscarAuto);
 
         Mockito.when(iBuscarAuto.buscarAutoByPatente("XYZ 123")).thenReturn(true);
