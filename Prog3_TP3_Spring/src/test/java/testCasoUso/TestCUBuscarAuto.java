@@ -28,4 +28,14 @@ public class TestCUBuscarAuto {
 
         assertTrue(unaBusqueda.buscarAuto("XYZ 123"));
     }
+
+    @Order(2)
+    @Test
+    public void test02_buscarAuto_autoNoExiste(){
+        BuscarAutoCU unaBusqueda = new BuscarAutoCU(iBuscarAuto);
+
+        Mockito.when(iBuscarAuto.buscarAutoByPatente("XYZ 123")).thenReturn(false);
+
+        assertFalse(unaBusqueda.buscarAuto("XYZ 123"));
+    }
 }
