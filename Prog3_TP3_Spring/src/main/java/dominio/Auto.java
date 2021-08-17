@@ -26,6 +26,8 @@ public class Auto {
             throw new ExceptionAutoAtributoNulo("El color no puede ser nulo");
         if(patente == null)
             throw new ExceptionAutoAtributoNulo("La patente no puede ser nula");
+        if(patente == "")
+            throw new ExceptionAutoAtributoVacia("El campo patente no puede quedar vacio");
 
         return new Auto(marca, modelo, color, cilindrada, patente, puertas, año);
     }

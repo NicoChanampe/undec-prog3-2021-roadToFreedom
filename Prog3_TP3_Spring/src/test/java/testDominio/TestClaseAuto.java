@@ -70,4 +70,12 @@ public class TestClaseAuto {
             Auto nuevoAuto = Auto.factoryAuto("Fiat","","blanco",1.1,"XYZ 123",3,1996);
         });
     }
+
+    @Order(8)
+    @Test
+    public void test08_excepcionAuto_patenteVacio(){
+        assertThrows(ExceptionAutoAtributoVacia.class, ()-> {
+            Auto nuevoAuto = Auto.factoryAuto("Fiat","147","blanco",1.1,"",3,1996);
+        });
+    }
 }
