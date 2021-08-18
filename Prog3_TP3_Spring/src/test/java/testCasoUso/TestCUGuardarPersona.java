@@ -61,4 +61,21 @@ public class TestCUGuardarPersona {
            simularGuardarPeople.cargarPersona(nuevaPersona);
         });
     }
+
+    @Order(3)
+    @Test
+    public void test03_guardarPersona_personaNoExiste_y_errorEnBD() throws ExceptionPersona {
+        //Arrange
+        LocalDate fechaNacimiento = LocalDate.parse("1999-01-20");
+        Persona nuevaPersona = Persona.factoryPersona(1, "Franco David", "Cardozo", "Racing", fechaNacimiento, "89753122", 1.73, 56.31);
+        GuardarPersonaCU simularGuardarPeople = new GuardarPersonaCU(iGuardarPersona, iLeerPersona);
+
+        //Act
+        Mockito.when(iLeerPersona.buscarPersonaPorDni("89753122")).thenReturn(false);
+        Mockito.when(iGuardarPersona.guardarPersona(nuevaPersona)).thenReturn(false);
+
+        //assert
+        assertFalse(simularGuardarPeople.cargarPersona(nuevaPersona));
+    }
+
 }
