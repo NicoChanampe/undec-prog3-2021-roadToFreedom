@@ -1,6 +1,6 @@
 package testCasoUso;
 
-import casosDeUso.BuscarPersonaCU;
+
 import casosDeUso.GuardarPersonaCU;
 import dominio.Persona;
 import exceptions.exceptionPersona.ExceptionPersona;
