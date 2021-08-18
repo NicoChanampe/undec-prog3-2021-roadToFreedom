@@ -50,4 +50,16 @@ public class TestCUGuardarAuto {
             simulacro.guardarAuto(autoExiste);
         });
     }
+
+    @Order(3)
+    @Test
+    public void test03_guardarAuto_autoNoExiste_y_errorEnBD()throws ExceptionAuto {
+        Auto maquinaDelMal = Auto.factoryAuto("Ford","Mustang","Gris",5.0,"cincinatty",3,1969);
+        GuardarAutoCU simulacro = new GuardarAutoCU(iGuardarAuto,iBuscarAuto);
+
+        Mockito.when(iBuscarAuto.buscarAutoByPatente("cincinatty")).thenReturn(false);
+        Mockito.when(iGuardarAuto.cargarAuto(maquinaDelMal)).thenReturn(false);
+
+        assertFalse(simulacro.guardarAuto(maquinaDelMal));
+    }
 }
