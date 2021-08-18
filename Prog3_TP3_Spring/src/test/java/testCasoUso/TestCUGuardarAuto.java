@@ -3,6 +3,7 @@ package testCasoUso;
 import casosDeUso.GuardarAutoCU;
 import dominio.Auto;
 import exceptions.exceptionAuto.ExceptionAuto;
+import exceptions.exceptionAuto.ExceptionAutoExistente;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -34,5 +35,19 @@ public class TestCUGuardarAuto {
         Mockito.when(iGuardarAuto.cargarAuto(maquinaDelMal)).thenReturn(true);
 
         assertTrue(simulacro.guardarAuto(maquinaDelMal));
+    }
+
+    @Order(2)
+    @Test
+    public void test02_guardarAuto_autoExiste_excepcionAutoExistente()throws ExceptionAuto {
+        Auto autoExiste = Auto.factoryAuto("Fiat","147","Azul",1.1,"XYZ 123",5,1998);
+        GuardarAutoCU simulacro = new GuardarAutoCU(iGuardarAuto,iBuscarAuto);
+
+        Mockito.when(iBuscarAuto.buscarAutoByPatente("XYZ 123")).thenReturn(true);
+        Mockito.verify(iGuardarAuto,Mockito.never()).cargarAuto(autoExiste);
+
+        assertThrows(ExceptionAutoExistente.class, ()->{
+            simulacro.guardarAuto(autoExiste);
+        });
     }
 }

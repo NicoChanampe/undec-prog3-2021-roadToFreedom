@@ -1,6 +1,8 @@
 package casosDeUso;
 
 import dominio.Auto;
+import exceptions.exceptionAuto.ExceptionAuto;
+import exceptions.exceptionAuto.ExceptionAutoExistente;
 import repositorio.IBuscarAuto;
 import repositorio.IGuardarAuto;
 
@@ -13,10 +15,9 @@ public class GuardarAutoCU {
         this.iBuscarAutoCU = iBuscarAuto;
     }
 
-
-    public boolean guardarAuto(Auto unAutito) {
+    public boolean guardarAuto(Auto unAutito) throws ExceptionAuto {
         if(iBuscarAutoCU.buscarAutoByPatente(unAutito.getPatente()))
-            return false;
+            throw new ExceptionAutoExistente("El auto existe en la BD");
         return iGuardarAutoCU.cargarAuto(unAutito);
     }
 }
