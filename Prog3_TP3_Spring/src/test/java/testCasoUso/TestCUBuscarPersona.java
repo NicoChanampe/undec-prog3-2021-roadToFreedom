@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @ExtendWith(MockitoExtension.class)
-public class TestCULecturaPersona {
+public class TestCUBuscarPersona {
 
     @Mock
     IBuscarPersona ileerPersona;
