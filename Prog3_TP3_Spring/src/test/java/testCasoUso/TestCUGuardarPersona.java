@@ -14,7 +14,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import repositorio.IGuardarPersona;
-import repositorio.ILeerPersona;
+import repositorio.IBuscarPersona;
 
 import java.time.LocalDate;
 
@@ -24,7 +24,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(MockitoExtension.class)
 public class TestCUGuardarPersona {
     @Mock
-    ILeerPersona iLeerPersona;
+    IBuscarPersona iBuscarPersona;
     @Mock
     IGuardarPersona iGuardarPersona;
 
@@ -34,10 +34,10 @@ public class TestCUGuardarPersona {
         //Arrange
         LocalDate fechaNacimiento = LocalDate.parse("1999-01-20");
         Persona nuevaPersona = Persona.factoryPersona(1, "Franco David", "Cardozo", "Racing", fechaNacimiento, "89753122", 1.73, 56.31);
-        GuardarPersonaCU simularGuardarPeople = new GuardarPersonaCU(iGuardarPersona, iLeerPersona);
+        GuardarPersonaCU simularGuardarPeople = new GuardarPersonaCU(iGuardarPersona, iBuscarPersona);
 
         //Act
-        Mockito.when(iLeerPersona.buscarPersonaPorDni("89753122")).thenReturn(false);
+        Mockito.when(iBuscarPersona.buscarPersonaPorDni("89753122")).thenReturn(false);
         Mockito.when(iGuardarPersona.guardarPersona(nuevaPersona)).thenReturn(true);
 
         //assert
@@ -50,10 +50,10 @@ public class TestCUGuardarPersona {
         //Arrange
         LocalDate fechaNacimiento = LocalDate.parse("1999-01-20");
         Persona nuevaPersona = Persona.factoryPersona(1, "Franco David", "Cardozo", "Racing", fechaNacimiento, "89753122", 1.73, 56.31);
-        GuardarPersonaCU simularGuardarPeople = new GuardarPersonaCU(iGuardarPersona, iLeerPersona);
+        GuardarPersonaCU simularGuardarPeople = new GuardarPersonaCU(iGuardarPersona, iBuscarPersona);
 
         //Act
-        Mockito.when(iLeerPersona.buscarPersonaPorDni("89753122")).thenReturn(true);
+        Mockito.when(iBuscarPersona.buscarPersonaPorDni("89753122")).thenReturn(true);
         Mockito.verify(iGuardarPersona,Mockito.never()).guardarPersona(nuevaPersona);
 
         //Assert
@@ -68,10 +68,10 @@ public class TestCUGuardarPersona {
         //Arrange
         LocalDate fechaNacimiento = LocalDate.parse("1999-01-20");
         Persona nuevaPersona = Persona.factoryPersona(1, "Franco David", "Cardozo", "Racing", fechaNacimiento, "89753122", 1.73, 56.31);
-        GuardarPersonaCU simularGuardarPeople = new GuardarPersonaCU(iGuardarPersona, iLeerPersona);
+        GuardarPersonaCU simularGuardarPeople = new GuardarPersonaCU(iGuardarPersona, iBuscarPersona);
 
         //Act
-        Mockito.when(iLeerPersona.buscarPersonaPorDni("89753122")).thenReturn(false);
+        Mockito.when(iBuscarPersona.buscarPersonaPorDni("89753122")).thenReturn(false);
         Mockito.when(iGuardarPersona.guardarPersona(nuevaPersona)).thenReturn(false);
 
         //assert

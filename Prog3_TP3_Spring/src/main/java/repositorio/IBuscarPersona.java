@@ -2,6 +2,6 @@ package repositorio;
 
 import dominio.Persona;
 
-public interface ILeerPersona {
+public interface IBuscarPersona {
     boolean buscarPersonaPorDni(String dniBuscado);
 }

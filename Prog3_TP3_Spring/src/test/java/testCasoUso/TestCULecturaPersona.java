@@ -1,7 +1,6 @@
 package testCasoUso;
 
 import casosDeUso.BuscarPersonaCU;
-import dominio.Persona;
 import exceptions.exceptionPersona.ExceptionPersona;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -11,9 +10,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import repositorio.ILeerPersona;
-
-import java.time.LocalDate;
+import repositorio.IBuscarPersona;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -22,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class TestCULecturaPersona {
 
     @Mock
-    ILeerPersona ileerPersona;
+    IBuscarPersona ileerPersona;
 
     @Order(1)
     @Test

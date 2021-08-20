@@ -1,17 +1,16 @@
 package casosDeUso;
 
-import dominio.Persona;
-import repositorio.ILeerPersona;
+import repositorio.IBuscarPersona;
 
 public class BuscarPersonaCU {
-    private ILeerPersona iLeerPersonaCU;
+    private IBuscarPersona iBuscarPersonaCU;
 
-    public BuscarPersonaCU(ILeerPersona ileerPersona) {
-        this.iLeerPersonaCU = ileerPersona;
+    public BuscarPersonaCU(IBuscarPersona ileerPersona) {
+        this.iBuscarPersonaCU = ileerPersona;
     }
 
     public boolean buscarPersona(String dniPersonaBuscada) {
-        boolean personaExiste = iLeerPersonaCU.buscarPersonaPorDni(dniPersonaBuscada);
+        boolean personaExiste = iBuscarPersonaCU.buscarPersonaPorDni(dniPersonaBuscada);
 
         return personaExiste;
     }
