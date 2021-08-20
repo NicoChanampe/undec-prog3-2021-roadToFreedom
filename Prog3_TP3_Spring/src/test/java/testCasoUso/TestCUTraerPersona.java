@@ -3,6 +3,7 @@ package testCasoUso;
 import casosDeUso.TraerPersonaCU;
 import dominio.Persona;
 import exceptions.exceptionPersona.ExceptionPersona;
+import exceptions.exceptionPersona.ExceptionPersonaNoEncontrada;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -36,5 +37,20 @@ public class TestCUTraerPersona {
 
         //Assert
         assertEquals(otroGato,simulacro.traerPersona("99884301"));
+    }
+
+    @Order(2)
+    @Test
+    public void test02_personaNoExiste_ExceptionPersonaNoEncontrada() throws ExceptionPersona{
+        //Arrange
+        TraerPersonaCU simulacro = new TraerPersonaCU(iTraerPersona);
+
+        //Act
+        Mockito.when(iTraerPersona.damePersonaSegunDni("99884301")).thenReturn(null);
+
+        //Assert
+        assertThrows(ExceptionPersonaNoEncontrada.class, ()->{
+            simulacro.traerPersona("99884301");
+        });
     }
 }
