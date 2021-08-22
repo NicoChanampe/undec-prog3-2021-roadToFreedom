@@ -74,4 +74,12 @@ public class Persona {
     public double getPeso() {
         return peso;
     }
+
+    public void setAltura(double nuevaAltura) {
+        this.altura = nuevaAltura;
+    }
+
+    public double getAltura() {
+        return altura;
+    }
 }

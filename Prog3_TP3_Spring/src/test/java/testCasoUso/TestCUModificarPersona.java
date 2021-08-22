@@ -75,4 +75,20 @@ public class TestCUModificarPersona {
             simulacro.modificarPesoPersona("87630115",-63.52);
         });
     }
+
+    @Order(4)
+    @Test
+    public void test04_modificarPersona_alturaSeModificaCorrectamente()throws ExceptionPersona{
+        //Arrange
+        LocalDate fechaNacimiento = LocalDate.parse("1999-01-20");
+        Persona nuevaPersona = Persona.factoryPersona(1,"Franco David","Cardozo","Racing",fechaNacimiento,"87630115",1.69,59.7);
+        ModificarPersonaCU simulacro = new ModificarPersonaCU(iTraerPersona,iModificarPersona);
+        //Act
+        Mockito.when(iTraerPersona.damePersonaSegunDni("87630115")).thenReturn(nuevaPersona);
+        nuevaPersona.setAltura(1.8);
+        Mockito.when(iModificarPersona.modificarAltura(nuevaPersona)).thenReturn(true);
+        //Assert
+        assertEquals(1.8,nuevaPersona.getAltura());
+        assertTrue(simulacro.modificarAlturaPersona("87630115",1.8));
+    }
 }

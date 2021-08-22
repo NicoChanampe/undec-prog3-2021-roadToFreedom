@@ -22,4 +22,10 @@ public class ModificarPersonaCU {
         personaAModificar.setPeso(nuevoPeso);
         return iModificarPersona.modificarPeso(personaAModificar);
     }
+
+    public boolean modificarAlturaPersona(String dni, double nuevaAltura){
+        Persona personaAModificar = iTraerPersona.damePersonaSegunDni(dni);
+        personaAModificar.setPeso(nuevaAltura);
+        return iModificarPersona.modificarAltura(personaAModificar);
+    }
 }
