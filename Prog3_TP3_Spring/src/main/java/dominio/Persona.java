@@ -66,4 +66,12 @@ public class Persona {
     public String getDni() {
         return dni;
     }
+
+    public void setPeso(double nuevoPeso) {
+        this.peso = nuevoPeso;
+    }
+
+    public double getPeso() {
+        return peso;
+    }
 }
