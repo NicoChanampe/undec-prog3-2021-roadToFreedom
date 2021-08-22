@@ -3,6 +3,7 @@ package testCasoUso;
 import casosDeUso.ModificarPersonaCU;
 import dominio.Persona;
 import exceptions.exceptionPersona.ExceptionPersona;
+import exceptions.exceptionPersona.ExceptionPersonaPesoErroneo;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -56,5 +57,22 @@ public class TestCUModificarPersona {
         //Assert
         assertEquals(63.52,nuevaPersona.getPeso());
         assertFalse(simulacro.modificarPesoPersona("87630115",63.52));
+    }
+
+    @Order(3)
+    @Test
+    public void test03_modificarPersona_pesoNegativo_personaPesoNegativo()throws ExceptionPersona{
+        //Arrange
+        LocalDate fechaNacimiento = LocalDate.parse("1999-01-20");
+        Persona nuevaPersona = Persona.factoryPersona(1,"Franco David","Cardozo","Racing",fechaNacimiento,"87630115",1.69,59.7);
+        ModificarPersonaCU simulacro = new ModificarPersonaCU(iTraerPersona,iModificarPersona);
+        //Act
+        Mockito.verify(iTraerPersona,Mockito.never()).damePersonaSegunDni("87630115");
+        Mockito.verify(iModificarPersona,Mockito.never()).modificarPeso(nuevaPersona);
+
+        //Assert
+        assertThrows(ExceptionPersonaPesoErroneo.class,()->{
+            simulacro.modificarPesoPersona("87630115",-63.52);
+        });
     }
 }

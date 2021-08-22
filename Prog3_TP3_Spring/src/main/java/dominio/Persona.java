@@ -67,7 +67,7 @@ public class Persona {
         return dni;
     }
 
-    public void setPeso(double nuevoPeso) {
+    public void setPeso(double nuevoPeso){
         this.peso = nuevoPeso;
     }
 
