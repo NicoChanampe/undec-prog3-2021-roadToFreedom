@@ -1,8 +1,9 @@
 package testCasoUso;
 
-import casosDeUso.BuscarPersonaCU;
+
 import casosDeUso.EliminarPersonaCU;
 import exceptions.exceptionPersona.ExceptionPersona;
+import exceptions.exceptionPersona.ExceptionPersonaNoEncontrada;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -26,7 +27,7 @@ public class TestCUEliminarPersona {
 
     @Order(1)
     @Test
-    public void test01_eliminarPersona_personaExiste_y_seEliminaCorrectamente(){
+    public void test01_eliminarPersona_personaExiste_y_seEliminaCorrectamente()throws ExceptionPersona{
         //Arrange
         EliminarPersonaCU simulacro = new EliminarPersonaCU(iBuscarPersona,iEliminarPersona);
 
@@ -40,7 +41,7 @@ public class TestCUEliminarPersona {
 
     @Order(2)
     @Test
-    public void test02_eliminarPersona_personaExiste_y_falloEnBD(){
+    public void test02_eliminarPersona_personaExiste_y_falloEnBD()throws ExceptionPersona{
         //Arrange
         EliminarPersonaCU simulacro = new EliminarPersonaCU(iBuscarPersona,iEliminarPersona);
 
@@ -50,6 +51,20 @@ public class TestCUEliminarPersona {
 
         //Assert
         assertFalse(simulacro.darDeBajaPersona("87966021"));
+    }
+
+    @Order(3)
+    @Test
+    public void test03_eliminarPersona_personaNoExiste_exceptionPersonaNoEncontrada(){
+        //Arrange
+        EliminarPersonaCU simulacro = new EliminarPersonaCU(iBuscarPersona,iEliminarPersona);
+
+        //Act
+        Mockito.when(iBuscarPersona.buscarPersonaPorDni("87966021")).thenReturn(false);
+        Mockito.verify(iEliminarPersona,Mockito.never()).darBajaPersona("87966021");
+
+        //Assert
+        assertThrows(ExceptionPersonaNoEncontrada.class,()-> simulacro.darDeBajaPersona("87966021"));
     }
 
 }
