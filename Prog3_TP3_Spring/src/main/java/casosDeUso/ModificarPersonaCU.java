@@ -2,6 +2,7 @@ package casosDeUso;
 
 import dominio.Persona;
 import exceptions.exceptionPersona.ExceptionPersona;
+import exceptions.exceptionPersona.ExceptionPersonaAlturaErronea;
 import exceptions.exceptionPersona.ExceptionPersonaPesoErroneo;
 import repositorio.IModificarPersona;
 import repositorio.ITraerPersona;
@@ -23,7 +24,9 @@ public class ModificarPersonaCU {
         return iModificarPersona.modificarPeso(personaAModificar);
     }
 
-    public boolean modificarAlturaPersona(String dni, double nuevaAltura){
+    public boolean modificarAlturaPersona(String dni, double nuevaAltura) throws ExceptionPersona{
+        if (nuevaAltura <= 0)
+            throw new ExceptionPersonaAlturaErronea("Altura ingresada erronea");
         Persona personaAModificar = iTraerPersona.damePersonaSegunDni(dni);
         personaAModificar.setPeso(nuevaAltura);
         return iModificarPersona.modificarAltura(personaAModificar);
