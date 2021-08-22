@@ -33,8 +33,8 @@ public class Auto {
             throw new ExceptionAutoCilindradaNegativa("El campo cilindrada no puede ser negativo");
         if(puertas != 3 && puertas != 5)
             throw new ExceptionAutoNumeroPuertasInvalido("La cantidad ingresada de puertas es invalida (3 o 5)");
-        if (año < 1890 || año > LocalDate.EPOCH.getYear())
-            throw new ExceptionAutoAñoInvalido("El año ingresado debe estar entre 1890 y " + LocalDate.EPOCH.getYear());
+        if (año < 1890 || año > LocalDate.now().getYear())
+            throw new ExceptionAutoAñoInvalido("El año ingresado debe estar entre 1890 y " + LocalDate.now().getYear());
 
         return new Auto(id,marca, modelo, color, cilindrada, patente, puertas, año);
     }
