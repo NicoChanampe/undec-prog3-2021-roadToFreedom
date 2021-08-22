@@ -40,6 +40,21 @@ public class TestCUModificarPersona {
         //Assert
         assertEquals(63.52,nuevaPersona.getPeso());
         assertTrue(simulacro.modificarPesoPersona("87630115",63.52));
+    }
 
+    @Order(2)
+    @Test
+    public void test02_modificarPersona_pesoSeModifica_fallaBD()throws ExceptionPersona{
+        //Arrange
+        LocalDate fechaNacimiento = LocalDate.parse("1999-01-20");
+        Persona nuevaPersona = Persona.factoryPersona(1,"Franco David","Cardozo","Racing",fechaNacimiento,"87630115",1.69,59.7);
+        ModificarPersonaCU simulacro = new ModificarPersonaCU(iTraerPersona,iModificarPersona);
+        //Act
+        Mockito.when(iTraerPersona.damePersonaSegunDni("87630115")).thenReturn(nuevaPersona);
+        nuevaPersona.setPeso(63.52);
+        Mockito.when(iModificarPersona.modificarPeso(nuevaPersona)).thenReturn(false);
+        //Assert
+        assertEquals(63.52,nuevaPersona.getPeso());
+        assertFalse(simulacro.modificarPesoPersona("87630115",63.52));
     }
 }
