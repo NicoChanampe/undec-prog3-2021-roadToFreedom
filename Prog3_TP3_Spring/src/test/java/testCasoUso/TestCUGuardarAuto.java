@@ -28,7 +28,7 @@ public class TestCUGuardarAuto {
     @Order(1)
     @Test
     public void test01_guardarAuto_autoNoExiste_y_esGuardado()throws ExceptionAuto {
-        Auto maquinaDelMal = Auto.factoryAuto("Ford","Mustang","Gris",5.0,"cincinatty",3,1969);
+        Auto maquinaDelMal = Auto.factoryAuto(1,"Ford","Mustang","Gris",5.0,"cincinatty",3,1969);
         GuardarAutoCU simulacro = new GuardarAutoCU(iGuardarAuto,iBuscarAuto);
 
         Mockito.when(iBuscarAuto.buscarAutoByPatente("cincinatty")).thenReturn(false);
@@ -40,7 +40,7 @@ public class TestCUGuardarAuto {
     @Order(2)
     @Test
     public void test02_guardarAuto_autoExiste_excepcionAutoExistente()throws ExceptionAuto {
-        Auto autoExiste = Auto.factoryAuto("Fiat","147","Azul",1.1,"XYZ 123",5,1998);
+        Auto autoExiste = Auto.factoryAuto(1,"Fiat","147","Azul",1.1,"XYZ 123",5,1998);
         GuardarAutoCU simulacro = new GuardarAutoCU(iGuardarAuto,iBuscarAuto);
 
         Mockito.when(iBuscarAuto.buscarAutoByPatente("XYZ 123")).thenReturn(true);
@@ -54,7 +54,7 @@ public class TestCUGuardarAuto {
     @Order(3)
     @Test
     public void test03_guardarAuto_autoNoExiste_y_errorEnBD()throws ExceptionAuto {
-        Auto maquinaDelMal = Auto.factoryAuto("Ford","Mustang","Gris",5.0,"cincinatty",3,1969);
+        Auto maquinaDelMal = Auto.factoryAuto(1,"Ford","Mustang","Gris",5.0,"cincinatty",3,1969);
         GuardarAutoCU simulacro = new GuardarAutoCU(iGuardarAuto,iBuscarAuto);
 
         Mockito.when(iBuscarAuto.buscarAutoByPatente("cincinatty")).thenReturn(false);

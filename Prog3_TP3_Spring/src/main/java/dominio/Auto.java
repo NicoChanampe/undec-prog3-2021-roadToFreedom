@@ -5,6 +5,7 @@ import exceptions.exceptionAuto.*;
 import java.time.LocalDate;
 
 public class Auto {
+    private Integer id;
     private String marca;
     private String modelo;
     private String color;
@@ -13,7 +14,7 @@ public class Auto {
     private Integer cantidadPuertas;
     private Integer añoFabricacion;
 
-    public static Auto factoryAuto(String marca, String modelo, String color, double cilindrada, String patente, int puertas, int año)throws ExceptionAuto {
+    public static Auto factoryAuto(Integer id,String marca, String modelo, String color, double cilindrada, String patente, int puertas, int año)throws ExceptionAuto {
         if(marca == null)
             throw new ExceptionAutoAtributoNulo("La marca no puede ser nula");
         if (marca == "")
@@ -35,10 +36,10 @@ public class Auto {
         if (año < 1890 || año > LocalDate.EPOCH.getYear())
             throw new ExceptionAutoAñoInvalido("El año ingresado debe estar entre 1890 y " + LocalDate.EPOCH.getYear());
 
-        return new Auto(marca, modelo, color, cilindrada, patente, puertas, año);
+        return new Auto(id,marca, modelo, color, cilindrada, patente, puertas, año);
     }
 
-    private Auto(String marca, String modelo, String color, Double cilindrada, String patente, Integer puertas, Integer año) {
+    private Auto(Integer id,String marca, String modelo, String color, Double cilindrada, String patente, Integer puertas, Integer año) {
         this.marca = marca;
         this.modelo = modelo;
         this.color = color;

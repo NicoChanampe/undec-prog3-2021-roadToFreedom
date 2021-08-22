@@ -17,7 +17,7 @@ public class TestClaseAuto {
     @Order(1)
     @Test
     public void test01_crearAutoCorrectamente()throws ExceptionAuto {
-        Auto nuevoAuto = Auto.factoryAuto("Fiat","147","Blanco",1.1,"XYZ 134",3,1996);
+        Auto nuevoAuto = Auto.factoryAuto(1,"Fiat","147","Blanco",1.1,"XYZ 134",3,1996);
         assertNotNull(nuevoAuto);
     }
 
@@ -25,7 +25,7 @@ public class TestClaseAuto {
     @Test
     public void test02_excepcionAuto_marcaNula(){
         assertThrows(ExceptionAutoAtributoNulo.class, ()-> {
-            Auto nuevoAuto = Auto.factoryAuto(null,"147","Blanco",1.1,"XYZ 134",3,1996);
+            Auto nuevoAuto = Auto.factoryAuto(1,null,"147","Blanco",1.1,"XYZ 134",3,1996);
         });
     }
 
@@ -33,7 +33,7 @@ public class TestClaseAuto {
     @Test
     public void test03_excepcionAuto_modeloNulo(){
         assertThrows(ExceptionAutoAtributoNulo.class, ()-> {
-            Auto nuevoAuto = Auto.factoryAuto("Fiat",null,"Blanco",1.1,"XYZ 134",3,1996);
+            Auto nuevoAuto = Auto.factoryAuto(1,"Fiat",null,"Blanco",1.1,"XYZ 134",3,1996);
         });
     }
 
@@ -41,7 +41,7 @@ public class TestClaseAuto {
     @Test
     public void test04_excepcionAuto_colorNulo(){
         assertThrows(ExceptionAutoAtributoNulo.class, ()-> {
-            Auto nuevoAuto = Auto.factoryAuto("Fiat","147",null,1.1,"XYZ 134",3,1996);
+            Auto nuevoAuto = Auto.factoryAuto(1,"Fiat","147",null,1.1,"XYZ 134",3,1996);
         });
     }
 
@@ -49,7 +49,7 @@ public class TestClaseAuto {
     @Test
     public void test05_excepcionAuto_patenteNula(){
         assertThrows(ExceptionAutoAtributoNulo.class, ()-> {
-            Auto nuevoAuto = Auto.factoryAuto("Fiat","147","blanco",1.1,null,3,1996);
+            Auto nuevoAuto = Auto.factoryAuto(1,"Fiat","147","blanco",1.1,null,3,1996);
         });
     }
 
@@ -57,7 +57,7 @@ public class TestClaseAuto {
     @Test
     public void test06_excepcionAuto_marcaVacia(){
         assertThrows(ExceptionAutoAtributoVacia.class, ()-> {
-            Auto nuevoAuto = Auto.factoryAuto("","147","blanco",1.1,"XYZ 123",3,1996);
+            Auto nuevoAuto = Auto.factoryAuto(1,"","147","blanco",1.1,"XYZ 123",3,1996);
         });
     }
 
@@ -65,7 +65,7 @@ public class TestClaseAuto {
     @Test
     public void test07_excepcionAuto_modeloVacio(){
         assertThrows(ExceptionAutoAtributoVacia.class, ()-> {
-            Auto nuevoAuto = Auto.factoryAuto("Fiat","","blanco",1.1,"XYZ 123",3,1996);
+            Auto nuevoAuto = Auto.factoryAuto(1,"Fiat","","blanco",1.1,"XYZ 123",3,1996);
         });
     }
 
@@ -73,7 +73,7 @@ public class TestClaseAuto {
     @Test
     public void test08_excepcionAuto_patenteVacia(){
         assertThrows(ExceptionAutoAtributoVacia.class, ()-> {
-            Auto nuevoAuto = Auto.factoryAuto("Fiat","147","blanco",1.1,"",3,1996);
+            Auto nuevoAuto = Auto.factoryAuto(1,"Fiat","147","blanco",1.1,"",3,1996);
         });
     }
 
@@ -81,7 +81,7 @@ public class TestClaseAuto {
     @Test
     public void test09_excepcionAuto_cilindradaNegativa(){
         assertThrows(ExceptionAutoCilindradaNegativa.class, ()-> {
-            Auto nuevoAuto = Auto.factoryAuto("Fiat","147","blanco",-1.1,"XTZ 123",3,1996);
+            Auto nuevoAuto = Auto.factoryAuto(1,"Fiat","147","blanco",-1.1,"XTZ 123",3,1996);
         });
     }
 
@@ -89,7 +89,7 @@ public class TestClaseAuto {
     @Test
     public void test10_excepcionAuto_cantidadInvalida_de_puertas(){
         assertThrows(ExceptionAutoNumeroPuertasInvalido.class, ()-> {
-            Auto nuevoAuto = Auto.factoryAuto("Fiat","147","blanco",1.1,"XTZ 123",6,1996);
+            Auto nuevoAuto = Auto.factoryAuto(1,"Fiat","147","blanco",1.1,"XTZ 123",6,1996);
         });
     }
 
@@ -97,11 +97,11 @@ public class TestClaseAuto {
     @Test
     public void test11_excepcionAuto_añoInvalido(){
         assertThrows(ExceptionAutoAñoInvalido.class, ()-> {
-            Auto nuevoAuto = Auto.factoryAuto("Fiat","147","blanco",1.1,"XTZ 123",5,1613);
+            Auto nuevoAuto = Auto.factoryAuto(1,"Fiat","147","blanco",1.1,"XTZ 123",5,1613);
         });
 
         assertThrows(ExceptionAutoAñoInvalido.class, ()-> {
-            Auto nuevoAuto = Auto.factoryAuto("Fiat","147","blanco",1.1,"XTZ 123",5,4160);
+            Auto nuevoAuto = Auto.factoryAuto(1,"Fiat","147","blanco",1.1,"XTZ 123",5,4160);
         });
     }
 }
