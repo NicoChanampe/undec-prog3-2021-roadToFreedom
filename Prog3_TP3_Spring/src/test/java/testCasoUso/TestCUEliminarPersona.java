@@ -38,4 +38,18 @@ public class TestCUEliminarPersona {
         assertTrue(simulacro.darDeBajaPersona("87966021"));
     }
 
+    @Order(2)
+    @Test
+    public void test02_eliminarPersona_personaExiste_y_falloEnBD(){
+        //Arrange
+        EliminarPersonaCU simulacro = new EliminarPersonaCU(iBuscarPersona,iEliminarPersona);
+
+        //Act
+        Mockito.when(iBuscarPersona.buscarPersonaPorDni("87966021")).thenReturn(true);
+        Mockito.when(iEliminarPersona.darBajaPersona("87966021")).thenReturn(false);
+
+        //Assert
+        assertFalse(simulacro.darDeBajaPersona("87966021"));
+    }
+
 }
