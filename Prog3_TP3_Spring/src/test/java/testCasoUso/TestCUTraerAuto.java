@@ -3,6 +3,7 @@ package testCasoUso;
 import casosDeUso.TraerAutoCU;
 import dominio.Auto;
 import exceptions.exceptionAuto.ExceptionAuto;
+import exceptions.exceptionAuto.ExceptionAutoNoExiste;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -30,5 +31,15 @@ public class TestCUTraerAuto {
         Mockito.when(iTraerAuto.dameAuto("KGV 346")).thenReturn(runrun);
 
         assertEquals(runrun,simulamos.traerAuto("KGV 346"));
+    }
+
+    @Order(2)
+    @Test
+    public void test02_traerAuto_autoNoExiste_lanzaException() {
+        TraerAutoCU simulamos = new TraerAutoCU(iTraerAuto);
+
+        Mockito.when(iTraerAuto.dameAuto("KGV 346")).thenReturn(null);
+
+        assertThrows(ExceptionAutoNoExiste.class,()-> simulamos.traerAuto("KGV 346"));
     }
 }
