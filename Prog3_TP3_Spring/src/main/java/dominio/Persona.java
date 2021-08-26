@@ -26,9 +26,7 @@ public class Persona {
             throw new ExceptionPersonaDniMalEscrito("El dni minimo debe tener 8 digitos");
         if(!validarDni(dni))
             throw new ExceptionPersonaDniMalEscrito("El dni solo debe contener numeros");
-        if(altura == 0)
-            throw new ExceptionPersonaAlturaErronea("La altura no puede ser cero");
-        if(altura < 0)
+        if(altura <= 0)
             throw new ExceptionPersonaAlturaErronea("La altura no puede ser negativa");
         if(peso <= 0)
             throw new ExceptionPersonaPesoErroneo("El peso no puede ser negativo");
