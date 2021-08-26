@@ -1,0 +1,13 @@
+REGLAS DE NEGOCIO PERSONA:
+
+* Las personas van a tener como atributos id, nombre, apellido, dni, hincha, fecha de nacimiento, altura y peso.
+* El unico dato que puede ser vacio es hincha.
+* Ningun dato puede ser nulo.
+* Se pueden modificar los atributos:
+        + nombre.
+        + apellido.
+        + hincha.
+        + altura.
+        + peso.
+* No pueden haber personas con el mismo dni.
+* La altura y el peso no pueden ser igual a 0 o negativos.
