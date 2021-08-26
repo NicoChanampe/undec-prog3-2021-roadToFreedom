@@ -30,7 +30,7 @@ public class TestCUModificarPersona {
 
     @Order(1)
     @Test
-    public void test01_modificarPersona_pesoSeModificaCorrectamente()throws ExceptionPersona{
+    public void test01_modificarPesoPersona_pesoSeModificaCorrectamente()throws ExceptionPersona{
         //Arrange
         LocalDate fechaNacimiento = LocalDate.parse("1999-01-20");
         Persona nuevaPersona = Persona.factoryPersona(1,"Franco David","Cardozo","Racing",fechaNacimiento,"87630115",1.69,59.7);
@@ -46,7 +46,7 @@ public class TestCUModificarPersona {
 
     @Order(2)
     @Test
-    public void test02_modificarPersona_pesoSeModifica_fallaBD()throws ExceptionPersona{
+    public void test02_modificarPesoPersona_pesoSeModifica_fallaBD()throws ExceptionPersona{
         //Arrange
         LocalDate fechaNacimiento = LocalDate.parse("1999-01-20");
         Persona nuevaPersona = Persona.factoryPersona(1,"Franco David","Cardozo","Racing",fechaNacimiento,"87630115",1.69,59.7);
@@ -62,7 +62,7 @@ public class TestCUModificarPersona {
 
     @Order(3)
     @Test
-    public void test03_modificarPersona_pesoNegativo_personaPesoNegativo()throws ExceptionPersona{
+    public void test03_modificarPesoPersona_pesoNegativo_personaPesoNegativo()throws ExceptionPersona{
         //Arrange
         LocalDate fechaNacimiento = LocalDate.parse("1999-01-20");
         Persona nuevaPersona = Persona.factoryPersona(1,"Franco David","Cardozo","Racing",fechaNacimiento,"87630115",1.69,59.7);
@@ -72,14 +72,12 @@ public class TestCUModificarPersona {
         Mockito.verify(iModificarPersona,Mockito.never()).modificarPeso(nuevaPersona);
 
         //Assert
-        assertThrows(ExceptionPersonaPesoErroneo.class,()->{
-            simulacro.modificarPesoPersona("87630115",-63.52);
-        });
+        assertThrows(ExceptionPersonaPesoErroneo.class,()-> simulacro.modificarPesoPersona("87630115",-63.52));
     }
 
     @Order(4)
     @Test
-    public void test04_modificarPersona_alturaSeModificaCorrectamente()throws ExceptionPersona{
+    public void test04_modificarAlturaPersona_alturaSeModificaCorrectamente()throws ExceptionPersona{
         //Arrange
         LocalDate fechaNacimiento = LocalDate.parse("1999-01-20");
         Persona nuevaPersona = Persona.factoryPersona(1,"Franco David","Cardozo","Racing",fechaNacimiento,"87630115",1.69,59.7);
@@ -95,7 +93,7 @@ public class TestCUModificarPersona {
 
     @Order(5)
     @Test
-    public void test05_modificarPersona_alturaSeModifica_fallaBD()throws ExceptionPersona{
+    public void test05_modificarAlturaPersona_alturaSeModifica_fallaBD()throws ExceptionPersona{
         //Arrange
         LocalDate fechaNacimiento = LocalDate.parse("1999-01-20");
         Persona nuevaPersona = Persona.factoryPersona(1,"Franco David","Cardozo","Racing",fechaNacimiento,"87630115",1.69,59.7);
@@ -111,7 +109,7 @@ public class TestCUModificarPersona {
 
     @Order(6)
     @Test
-    public void test06_modificarPersona_alturaErronea_personaAlturaNegativa()throws ExceptionPersona{
+    public void test06_modificarAlturaPersona_alturaErronea_personaAlturaNegativa()throws ExceptionPersona{
         //Arrange
         LocalDate fechaNacimiento = LocalDate.parse("1999-01-20");
         Persona nuevaPersona = Persona.factoryPersona(1,"Franco David","Cardozo","Racing",fechaNacimiento,"87630115",1.69,59.7);
@@ -120,8 +118,6 @@ public class TestCUModificarPersona {
         Mockito.verify(iTraerPersona,Mockito.never()).damePersonaSegunDni("87630115");
         Mockito.verify(iModificarPersona,Mockito.never()).modificarAltura(nuevaPersona);
         //Assert
-        assertThrows(ExceptionPersonaAlturaErronea.class,()->{
-            simulacro.modificarAlturaPersona("87630115",-1.82);
-        });
+        assertThrows(ExceptionPersonaAlturaErronea.class,()-> simulacro.modificarAlturaPersona("87630115",-1.82));
     }
 }
