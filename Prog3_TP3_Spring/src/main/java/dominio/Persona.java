@@ -16,8 +16,8 @@ public class Persona {
 
 
     public static Persona factoryPersona(int id, String nombre, String apellido, String club, LocalDate fecha, String dni, Double altura, Double peso) throws ExceptionPersona {
-        if(nombre == null || apellido == null || dni == null || peso == null)
-            throw new ExceptionPersonaAtributoNulo("Los campos apellido, nombre, dni y peso no pueden ser nulos");
+        if(nombre == null || apellido == null || dni == null || peso == null || altura == null)
+            throw new ExceptionPersonaAtributoNulo("Los campos apellido, nombre, dni, peso o altura no pueden ser nulos");
         if(dni.equals("") || nombre.equals("") || apellido.equals(""))
             throw new ExceptionPersonaAtributoVacio("Los campos apellido, nombre y dni no pueden estar sin completar");
         if(dni.length() > 9)
