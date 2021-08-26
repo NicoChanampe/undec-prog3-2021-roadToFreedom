@@ -33,9 +33,7 @@ public class TestClasePersona {
         //arrange
         LocalDate fechaNacimiento = LocalDate.parse("1999-01-20");
         //assert
-        assertThrows(ExceptionPersonaAtributoNulo.class, () -> {
-            Persona nuevaPersona = Persona.factoryPersona(1, null, "Cardozo", "Racing", fechaNacimiento, "89753122", 1.73, 56.31);
-        });
+        assertThrows(ExceptionPersonaAtributoNulo.class, () -> Persona.factoryPersona(1, null, "Cardozo", "Racing", fechaNacimiento, "89753122", 1.73, 56.31));
     }
 
     @Order(3)
@@ -44,9 +42,7 @@ public class TestClasePersona {
         //arrange
         LocalDate fechaNacimiento = LocalDate.parse("1999-01-20");
         //assert
-        assertThrows(ExceptionPersonaAtributoNulo.class, () -> {
-            Persona nuevaPersona = Persona.factoryPersona(2, "Belen Sabrina", null, "River", fechaNacimiento, "46323162", 1.52, 56.31);
-        });
+        assertThrows(ExceptionPersonaAtributoNulo.class, () -> Persona.factoryPersona(2, "Belen Sabrina", null, "River", fechaNacimiento, "46323162", 1.52, 56.31));
     }
 
     @Order(4)
@@ -55,9 +51,7 @@ public class TestClasePersona {
         //arrange
         LocalDate fechaNacimiento = LocalDate.parse("1999-01-20");
         //assert
-        assertThrows(ExceptionPersonaAtributoNulo.class, () -> {
-            Persona nuevaPersona = Persona.factoryPersona(1, "Franco David", "Cardozo", "Racing", fechaNacimiento, null, 1.73, 56.31);
-        });
+        assertThrows(ExceptionPersonaAtributoNulo.class, () -> Persona.factoryPersona(1, "Franco David", "Cardozo", "Racing", fechaNacimiento, null, 1.73, 56.31));
     }
 
     @Order(5)
@@ -66,9 +60,7 @@ public class TestClasePersona {
         //arrange
         LocalDate fechaNacimiento = LocalDate.parse("1999-01-20");
         //assert
-        assertThrows(ExceptionPersonaAtributoVacio.class, () -> {
-            Persona nuevaPersona = Persona.factoryPersona(1, "Franco David", "Cardozo", "Racing", fechaNacimiento, "", 1.73, 56.31);
-        });
+        assertThrows(ExceptionPersonaAtributoVacio.class, () -> Persona.factoryPersona(1, "Franco David", "Cardozo", "Racing", fechaNacimiento, "", 1.73, 56.31));
     }
 
     @Order(6)
@@ -77,9 +69,7 @@ public class TestClasePersona {
         //arrange
         LocalDate fechaNacimiento = LocalDate.parse("1999-01-20");
         //assert
-        assertThrows(ExceptionPersonaAtributoVacio.class, () -> {
-            Persona nuevaPersona = Persona.factoryPersona(1, "", "Cardozo", "Racing", fechaNacimiento, "89753122", 1.73, 56.31);
-        });
+        assertThrows(ExceptionPersonaAtributoVacio.class, () -> Persona.factoryPersona(1, "", "Cardozo", "Racing", fechaNacimiento, "89753122", 1.73, 56.31));
     }
 
     @Order(7)
@@ -88,9 +78,7 @@ public class TestClasePersona {
         //arrange
         LocalDate fechaNacimiento = LocalDate.parse("1999-01-20");
         //assert
-        assertThrows(ExceptionPersonaAtributoVacio.class, () -> {
-            Persona nuevaPersona = Persona.factoryPersona(1, "Franco David", "", "Racing", fechaNacimiento, "89753122", 1.73, 56.31);
-        });
+        assertThrows(ExceptionPersonaAtributoVacio.class, () -> Persona.factoryPersona(1, "Franco David", "", "Racing", fechaNacimiento, "89753122", 1.73, 56.31));
     }
 
     @Order(8)
@@ -99,9 +87,7 @@ public class TestClasePersona {
         //arrange
         LocalDate fechaNacimiento = LocalDate.parse("1999-01-20");
         //assert
-        assertThrows(ExceptionPersonaDniMalEscrito.class, () -> {
-            Persona nuevaPersona = Persona.factoryPersona(1, "Franco David", "Cardozo", "Racing", fechaNacimiento, "8975312246", 1.73, 56.31);
-        });
+        assertThrows(ExceptionPersonaDniMalEscrito.class, () -> Persona.factoryPersona(1, "Franco David", "Cardozo", "Racing", fechaNacimiento, "8975312246", 1.73, 56.31));
     }
 
     @Order(9)
@@ -110,9 +96,7 @@ public class TestClasePersona {
         //arrange
         LocalDate fechaNacimiento = LocalDate.parse("1999-01-20");
         //assert
-        assertThrows(ExceptionPersonaDniMalEscrito.class, () -> {
-            Persona nuevaPersona = Persona.factoryPersona(1, "Franco David", "Cardozo", "Racing", fechaNacimiento, "8931224", 1.73, 56.31);
-        });
+        assertThrows(ExceptionPersonaDniMalEscrito.class, () -> Persona.factoryPersona(1, "Franco David", "Cardozo", "Racing", fechaNacimiento, "8931224", 1.73, 56.31));
     }
 
     @Order(10)
@@ -121,9 +105,7 @@ public class TestClasePersona {
         //arrange
         LocalDate fechaNacimiento = LocalDate.parse("1999-01-20");
         //assert
-        assertThrows(ExceptionPersonaDniMalEscrito.class, () -> {
-            Persona nuevaPersona = Persona.factoryPersona(1, "Franco David", "Cardozo", "Racing", fechaNacimiento, "89.312.124", 1.73, 56.31);
-        });
+        assertThrows(ExceptionPersonaDniMalEscrito.class, () -> Persona.factoryPersona(1, "Franco David", "Cardozo", "Racing", fechaNacimiento, "89.312.124", 1.73, 56.31));
     }
 
     @Order(11)
@@ -132,9 +114,7 @@ public class TestClasePersona {
         //arrange
         LocalDate fechaNacimiento = LocalDate.parse("1999-01-20");
         //assert
-        assertThrows(ExceptionPersonaDniMalEscrito.class, () -> {
-            Persona nuevaPersona = Persona.factoryPersona(1, "Franco David", "Cardozo", "Racing", fechaNacimiento, "8t312124", 1.73, 56.31);
-        });
+        assertThrows(ExceptionPersonaDniMalEscrito.class, () -> Persona.factoryPersona(1, "Franco David", "Cardozo", "Racing", fechaNacimiento, "8t312124", 1.73, 56.31));
     }
 
     @Order(12)
@@ -143,9 +123,7 @@ public class TestClasePersona {
         //arrange
         LocalDate fechaNacimiento = LocalDate.parse("1999-01-20");
         //assert
-        assertThrows(ExceptionPersonaAlturaErronea.class, () -> {
-            Persona nuevaPersona = Persona.factoryPersona(1, "Franco David", "Cardozo", "Racing", fechaNacimiento, "89312124", 0.0, 56.31);
-        });
+        assertThrows(ExceptionPersonaAlturaErronea.class, () -> Persona.factoryPersona(1, "Franco David", "Cardozo", "Racing", fechaNacimiento, "89312124", 0.0, 56.31));
     }
 
     @Order(13)
@@ -154,9 +132,7 @@ public class TestClasePersona {
         //arrange
         LocalDate fechaNacimiento = LocalDate.parse("1999-01-20");
         //assert
-        assertThrows(ExceptionPersonaAlturaErronea.class, () -> {
-            Persona nuevaPersona = Persona.factoryPersona(1, "Franco David", "Cardozo", "Racing", fechaNacimiento, "89312124", -1.73, 56.31);
-        });
+        assertThrows(ExceptionPersonaAlturaErronea.class, () -> Persona.factoryPersona(1, "Franco David", "Cardozo", "Racing", fechaNacimiento, "89312124", -1.73, 56.31));
     }
 
     @Order(14)
@@ -165,9 +141,7 @@ public class TestClasePersona {
         //arrange
         LocalDate fechaNacimiento = LocalDate.parse("1999-01-20");
         //assert
-        assertThrows(ExceptionPersonaPesoErroneo.class, () -> {
-            Persona nuevaPersona = Persona.factoryPersona(1, "Franco David", "Cardozo", "Racing", fechaNacimiento, "89312124", 1.73, -56.31);
-        });
+        assertThrows(ExceptionPersonaPesoErroneo.class, () -> Persona.factoryPersona(1, "Franco David", "Cardozo", "Racing", fechaNacimiento, "89312124", 1.73, -56.31));
     }
 
 }
