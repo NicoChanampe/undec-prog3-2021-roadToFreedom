@@ -144,4 +144,13 @@ public class TestClasePersona {
         assertThrows(ExceptionPersonaPesoErroneo.class, () -> Persona.factoryPersona(1, "Franco David", "Cardozo", "Racing", fechaNacimiento, "89312124", 1.73, -56.31));
     }
 
+    @Order(15)
+    @Test
+    public void test15_creacionPersona_personaPesoCero() {
+        //arrange
+        LocalDate fechaNacimiento = LocalDate.parse("1999-01-20");
+        //assert
+        assertThrows(ExceptionPersonaPesoErroneo.class, () -> Persona.factoryPersona(1, "Franco David", "Cardozo", "Racing", fechaNacimiento, "89312124", 1.73, 0.0));
+    }
+
 }
