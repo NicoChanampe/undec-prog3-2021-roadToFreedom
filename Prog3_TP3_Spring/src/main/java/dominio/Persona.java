@@ -16,18 +16,10 @@ public class Persona {
 
 
     public static Persona factoryPersona(int id, String nombre, String apellido, String club, LocalDate fecha, String dni, Double altura, Double peso) throws ExceptionPersona {
-        if(nombre == null)
-            throw new ExceptionPersonaAtributoNulo("El nombre no puede ser nulo");
-        if(apellido == null)
-            throw new ExceptionPersonaAtributoNulo("El apellido no puede ser nulo");
-        if(dni == null)
-            throw new ExceptionPersonaAtributoNulo("El DNI no puede ser nulo");
-        if(dni == "")
-            throw new ExceptionPersonaAtributoVacio("El DNI no puede estar sin completar");
-        if(nombre == "")
-            throw new ExceptionPersonaAtributoVacio("El campo nombre no puede quedar vacio");
-        if(apellido == "")
-            throw new ExceptionPersonaAtributoVacio("El campo apellido no puede quedar vacio");
+        if(nombre == null || apellido == null || dni == null)
+            throw new ExceptionPersonaAtributoNulo("Los campos apellido, nombre y dni no pueden ser nulos");
+        if(dni == "" || nombre == "" || apellido == "")
+            throw new ExceptionPersonaAtributoVacio("Los campos apellido, nombre y dni no pueden estar sin completar");
         if(dni.length() > 9)
             throw new ExceptionPersonaDniMalEscrito("El dni no puede tener mas de 10 digitos");
         if(dni.length() < 8)
