@@ -16,9 +16,9 @@ public class Persona {
 
 
     public static Persona factoryPersona(int id, String nombre, String apellido, String club, LocalDate fecha, String dni, Double altura, Double peso) throws ExceptionPersona {
-        if(nombre == null || apellido == null || dni == null)
-            throw new ExceptionPersonaAtributoNulo("Los campos apellido, nombre y dni no pueden ser nulos");
-        if(dni == "" || nombre == "" || apellido == "")
+        if(nombre == null || apellido == null || dni == null || peso == null)
+            throw new ExceptionPersonaAtributoNulo("Los campos apellido, nombre, dni y peso no pueden ser nulos");
+        if(dni.equals("") || nombre.equals("") || apellido.equals(""))
             throw new ExceptionPersonaAtributoVacio("Los campos apellido, nombre y dni no pueden estar sin completar");
         if(dni.length() > 9)
             throw new ExceptionPersonaDniMalEscrito("El dni no puede tener mas de 10 digitos");
@@ -27,9 +27,9 @@ public class Persona {
         if(!validarDni(dni))
             throw new ExceptionPersonaDniMalEscrito("El dni solo debe contener numeros");
         if(altura <= 0)
-            throw new ExceptionPersonaAlturaErronea("La altura no puede ser negativa");
+            throw new ExceptionPersonaAlturaErronea("Altura ingresada erronea");
         if(peso <= 0)
-            throw new ExceptionPersonaPesoErroneo("El peso no puede ser negativo");
+            throw new ExceptionPersonaPesoErroneo("Peso ingresado erroneo");
 
         return new Persona(id, nombre, apellido, club, fecha, dni, altura, peso);
     }
