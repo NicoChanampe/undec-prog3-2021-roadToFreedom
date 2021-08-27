@@ -96,7 +96,7 @@ public class TestClasePersona {
         //arrange
         LocalDate fechaNacimiento = LocalDate.parse("1999-01-20");
         //assert
-        assertThrows(ExceptionPersonaDniMalEscrito.class, () -> Persona.factoryPersona(1, "Franco David", "Cardozo", "Racing", fechaNacimiento, "8931224", 1.73, 56.31));
+        assertThrows(ExceptionPersonaDniMalEscrito.class, () -> Persona.factoryPersona(1, "Franco David", "Cardozo", "Racing", fechaNacimiento, "893124", 1.73, 56.31));
     }
 
     @Order(10)
@@ -169,6 +169,48 @@ public class TestClasePersona {
         LocalDate fechaNacimiento = LocalDate.parse("1999-01-20");
         //assert
         assertThrows(ExceptionPersonaAtributoNulo.class, () -> Persona.factoryPersona(1, "Franco David", "Cardozo", "Racing", fechaNacimiento, "89312124", null, 56.75));
+    }
+
+    @Order(18)
+    @Test
+    public void test18_actualizarPersona_seModificanDatosPersona()throws ExceptionPersona{
+        //Arrange
+        LocalDate fechaNacimiento = LocalDate.parse("1999-01-20");
+        LocalDate otraFecha = LocalDate.parse("1999-01-20");
+        Persona estaPersona = Persona.factoryPersona(1,"Franco David","Cardozo","Racing",fechaNacimiento,"89678215",1.79,63.7);
+        Persona personaActualizada = Persona.factoryPersona(2,"James","Rodriguez","Deportivo Cali",otraFecha,"89678215",1.8,63.4);
+
+        estaPersona.actualizarDatos(personaActualizada);
+        assertEquals(personaActualizada.getNombre(),estaPersona.getNombre());
+        assertEquals(personaActualizada.getApellido(),estaPersona.getApellido());
+        assertEquals(personaActualizada.getHincha(),estaPersona.getHincha());
+        assertEquals(fechaNacimiento,estaPersona.getFechaNacimiento()); //La fecha de nacimiento no se cambia sin importar si se ingresa una distinta
+        assertEquals(personaActualizada.getAltura(),estaPersona.getAltura());
+        assertEquals(personaActualizada.getPeso(),estaPersona.getPeso());
+    }
+
+    @Order(19)
+    @Test
+    public void test19_actualizarPeso_pesoSeActualizaCorrectamente()throws ExceptionPersona{
+        //Arrange
+        LocalDate fechaNacimiento = LocalDate.parse("1999-01-20");
+        Persona nuevaPersona = Persona.factoryPersona(1,"Franco David","Cardozo","Racing",fechaNacimiento,"89678215",1.79,63.7);
+        //Act
+        nuevaPersona.actualizarPeso(63.52);
+        //Assert
+        assertEquals(63.52,nuevaPersona.getPeso());
+    }
+
+    @Order(20)
+    @Test
+    public void test20_actualizarAltura_alturaSeActualizaCorrectamente()throws ExceptionPersona{
+        //Arrange
+        LocalDate fechaNacimiento = LocalDate.parse("1999-01-20");
+        Persona nuevaPersona = Persona.factoryPersona(1,"Franco David","Cardozo","Racing",fechaNacimiento,"89678215",1.79,63.7);
+        //Act
+        nuevaPersona.actualizarAltura(1.8);
+        //Assert
+        assertEquals(1.8,nuevaPersona.getAltura());
     }
 
 }

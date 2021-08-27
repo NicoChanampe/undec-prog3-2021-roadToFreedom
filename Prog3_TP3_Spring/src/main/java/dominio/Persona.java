@@ -20,10 +20,8 @@ public class Persona {
             throw new ExceptionPersonaAtributoNulo("Los campos apellido, nombre, dni, peso o altura no pueden ser nulos");
         if(dni.equals("") || nombre.equals("") || apellido.equals(""))
             throw new ExceptionPersonaAtributoVacio("Los campos apellido, nombre y dni no pueden estar sin completar");
-        if(dni.length() > 9)
-            throw new ExceptionPersonaDniMalEscrito("El dni no puede tener mas de 10 digitos");
-        if(dni.length() < 8)
-            throw new ExceptionPersonaDniMalEscrito("El dni minimo debe tener 8 digitos");
+        if(dni.length() < 7 || dni.length() > 9)
+            throw new ExceptionPersonaDniMalEscrito("El dni debe tener entre 7 y 9 digitos");
         if(!validarDni(dni))
             throw new ExceptionPersonaDniMalEscrito("El dni solo debe contener numeros");
         if(altura <= 0)
@@ -57,19 +55,68 @@ public class Persona {
         return dni;
     }
 
-    public void setPeso(double nuevoPeso){
-        this.peso = nuevoPeso;
-    }
-
     public double getPeso() {
         return peso;
     }
 
-    public void setAltura(double nuevaAltura) {
+    public double getAltura() {
+        return altura;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public String getHincha() {
+        return clubHincha;
+    }
+
+    public LocalDate getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public void actualizarDatos(Persona personaActualizada) {
+        if(personaActualizada.getPeso() != this.peso)
+            setPeso(personaActualizada.getPeso());
+        if(personaActualizada.getAltura() != this.altura)
+            setAltura(personaActualizada.getAltura());
+        if(!personaActualizada.getNombre().equals(this.nombre))
+            setNombre(personaActualizada.getNombre());
+        if(!personaActualizada.getApellido().equals(this.apellido))
+            setApellido(personaActualizada.getApellido());
+        if(!personaActualizada.getHincha().equals(this.clubHincha))
+            setClubHincha(personaActualizada.getHincha());
+    }
+
+    private void setPeso(double nuevoPeso){
+        this.peso = nuevoPeso;
+    }
+
+    private void setAltura(double nuevaAltura) {
         this.altura = nuevaAltura;
     }
 
-    public double getAltura() {
-        return altura;
+    private void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    private void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    private void setClubHincha(String clubHincha) {
+        this.clubHincha = clubHincha;
+    }
+
+    public void actualizarPeso(double nuevoPeso) throws ExceptionPersona{
+        this.actualizarDatos(Persona.factoryPersona(id,nombre,apellido,clubHincha,fechaNacimiento,dni,altura,nuevoPeso));
+    }
+
+    public void actualizarAltura(double nuevaAltura)throws ExceptionPersona {
+        this.actualizarDatos(Persona.factoryPersona(id,nombre,apellido,clubHincha,fechaNacimiento,dni,nuevaAltura,peso));
     }
 }

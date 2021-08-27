@@ -37,10 +37,9 @@ public class TestCUModificarPersona {
         ModificarPersonaCU simulacro = new ModificarPersonaCU(iTraerPersona,iModificarPersona);
         //Act
         Mockito.when(iTraerPersona.damePersonaSegunDni("87630115")).thenReturn(nuevaPersona);
-        nuevaPersona.setPeso(63.52);
+        nuevaPersona.actualizarPeso(63.52);
         Mockito.when(iModificarPersona.modificarPeso(nuevaPersona)).thenReturn(true);
         //Assert
-        assertEquals(63.52,nuevaPersona.getPeso());
         assertTrue(simulacro.modificarPesoPersona("87630115",63.52));
     }
 
@@ -53,10 +52,9 @@ public class TestCUModificarPersona {
         ModificarPersonaCU simulacro = new ModificarPersonaCU(iTraerPersona,iModificarPersona);
         //Act
         Mockito.when(iTraerPersona.damePersonaSegunDni("87630115")).thenReturn(nuevaPersona);
-        nuevaPersona.setPeso(63.52);
+        nuevaPersona.actualizarPeso(63.52);
         Mockito.when(iModificarPersona.modificarPeso(nuevaPersona)).thenReturn(false);
         //Assert
-        assertEquals(63.52,nuevaPersona.getPeso());
         assertFalse(simulacro.modificarPesoPersona("87630115",63.52));
     }
 
@@ -84,10 +82,9 @@ public class TestCUModificarPersona {
         ModificarPersonaCU simulacro = new ModificarPersonaCU(iTraerPersona,iModificarPersona);
         //Act
         Mockito.when(iTraerPersona.damePersonaSegunDni("87630115")).thenReturn(nuevaPersona);
-        nuevaPersona.setAltura(1.8);
+        nuevaPersona.actualizarAltura(1.8);
         Mockito.when(iModificarPersona.modificarAltura(nuevaPersona)).thenReturn(true);
         //Assert
-        assertEquals(1.8,nuevaPersona.getAltura());
         assertTrue(simulacro.modificarAlturaPersona("87630115",1.8));
     }
 
@@ -100,10 +97,9 @@ public class TestCUModificarPersona {
         ModificarPersonaCU simulacro = new ModificarPersonaCU(iTraerPersona,iModificarPersona);
         //Act
         Mockito.when(iTraerPersona.damePersonaSegunDni("87630115")).thenReturn(nuevaPersona);
-        nuevaPersona.setAltura(1.8);
+        nuevaPersona.actualizarAltura(1.8);
         Mockito.when(iModificarPersona.modificarAltura(nuevaPersona)).thenReturn(false);
         //Assert
-        assertEquals(1.8,nuevaPersona.getAltura());
         assertFalse(simulacro.modificarAlturaPersona("87630115",1.8));
     }
 
