@@ -246,4 +246,15 @@ public class TestClasePersona {
         assertThrows(ExceptionPersonaAlturaErronea.class, ()->nuevaPersona.actualizarAltura(-1.94));
     }
 
+    @Order(24)
+    @Test
+    public void test24_actualizarAltura_alturaCeroLanzaExcepcionAlturaErronea()throws ExceptionPersona{
+        //Arrange
+        LocalDate fechaNacimiento = LocalDate.parse("1999-01-20");
+        Persona nuevaPersona = Persona.factoryPersona(1,"Franco David","Cardozo","Racing",fechaNacimiento,"89678215",1.79,63.7);
+
+        //Assert
+        assertThrows(ExceptionPersonaAlturaErronea.class, ()->nuevaPersona.actualizarAltura(0.0));
+    }
+
 }
