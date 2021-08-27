@@ -66,7 +66,7 @@ public class TestCUModificarPersona {
         Persona nuevaPersona = Persona.factoryPersona(1,"Franco David","Cardozo","Racing",fechaNacimiento,"87630115",1.69,59.7);
         ModificarPersonaCU simulacro = new ModificarPersonaCU(iTraerPersona,iModificarPersona);
         //Act
-        Mockito.verify(iTraerPersona,Mockito.never()).damePersonaSegunDni("87630115");
+        Mockito.when(iTraerPersona.damePersonaSegunDni("87630115")).thenReturn(nuevaPersona);
         Mockito.verify(iModificarPersona,Mockito.never()).modificarPeso(nuevaPersona);
 
         //Assert
@@ -111,7 +111,7 @@ public class TestCUModificarPersona {
         Persona nuevaPersona = Persona.factoryPersona(1,"Franco David","Cardozo","Racing",fechaNacimiento,"87630115",1.69,59.7);
         ModificarPersonaCU simulacro = new ModificarPersonaCU(iTraerPersona,iModificarPersona);
         //Act
-        Mockito.verify(iTraerPersona,Mockito.never()).damePersonaSegunDni("87630115");
+        Mockito.when(iTraerPersona.damePersonaSegunDni("87630115")).thenReturn(nuevaPersona);
         Mockito.verify(iModificarPersona,Mockito.never()).modificarAltura(nuevaPersona);
         //Assert
         assertThrows(ExceptionPersonaAlturaErronea.class,()-> simulacro.modificarAlturaPersona("87630115",-1.82));
