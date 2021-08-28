@@ -2,10 +2,7 @@ package casosDeUso;
 
 import dominio.Persona;
 import exceptions.exceptionAuto.ExceptionAutoNoExiste;
-import exceptions.exceptionPersona.ExceptionPersona;
-import exceptions.exceptionPersona.ExceptionPersonaAlturaErronea;
-import exceptions.exceptionPersona.ExceptionPersonaNoEncontrada;
-import exceptions.exceptionPersona.ExceptionPersonaPesoErroneo;
+import exceptions.exceptionPersona.*;
 import repositorio.IModificarPersona;
 import repositorio.ITraerPersona;
 
@@ -19,6 +16,7 @@ public class ModificarPersonaCU {
     }
 
     public boolean modificarPesoPersona(String dni,double nuevoPeso) throws ExceptionPersona {
+        validarDni(dni);
         Persona personaAModificar = iTraerPersona.damePersonaSegunDni(dni);
         existePersona(personaAModificar);
         personaAModificar.actualizarPeso(nuevoPeso);
@@ -35,5 +33,14 @@ public class ModificarPersonaCU {
     private void existePersona(Persona personaBuscada) throws ExceptionPersona {
         if(personaBuscada == null)
             throw new ExceptionPersonaNoEncontrada("La persona que busca no existe en la BD");
+    }
+
+    private void validarDni(String dni) throws ExceptionPersona{
+        if(dni.length() < 7 || dni.length() > 9)
+            throw new ExceptionPersonaDniMalEscrito("El dni ingresado esta mal escrito (entre 7 y 9 numeros)");
+        for(int i = 0;i<dni.length();i++){
+            if(dni.codePointAt(i) < 48 || dni.codePointAt(i) > 57)
+                throw new ExceptionPersonaDniMalEscrito("El dni ingresado esta mal escrito (solo debe tener numeros)");
+        }
     }
 }
