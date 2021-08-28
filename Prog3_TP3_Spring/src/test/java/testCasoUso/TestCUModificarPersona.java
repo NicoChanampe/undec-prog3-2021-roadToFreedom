@@ -2,6 +2,7 @@ package testCasoUso;
 
 import casosDeUso.ModificarPersonaCU;
 import dominio.Persona;
+import exceptions.exceptionAuto.ExceptionAuto;
 import exceptions.exceptionPersona.*;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -210,5 +211,21 @@ public class TestCUModificarPersona {
 
         //Assert
         assertFalse(simulacro.modificarDatosPersona(personaActualizada));
+    }
+
+    @Order(13)
+    @Test
+    public void test13_modificarDatosPersona_personaNoExiste_excepcionPersonaNoEncontrada()throws ExceptionPersona{
+        //Arrange
+        LocalDate otraFecha = LocalDate.parse("1999-01-20");
+        Persona personaActualizada = Persona.factoryPersona(2,"James","Rodriguez","Deportivo Cali",otraFecha,"89678215",1.8,63.4);
+        ModificarPersonaCU simulacro = new ModificarPersonaCU(iTraerPersona,iModificarPersona);
+
+        //Act
+        Mockito.when(iTraerPersona.damePersonaSegunDni(personaActualizada.getDni())).thenReturn(null);
+        Mockito.verify(iModificarPersona,Mockito.never()).modificarDatos(personaActualizada);
+
+        //Assert
+        assertThrows(ExceptionPersonaNoEncontrada.class, ()-> simulacro.modificarDatosPersona(personaActualizada));
     }
 }

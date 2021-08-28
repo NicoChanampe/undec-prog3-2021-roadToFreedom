@@ -45,8 +45,9 @@ public class ModificarPersonaCU {
         }
     }
 
-    public boolean modificarDatosPersona(Persona personaActualizada) {
+    public boolean modificarDatosPersona(Persona personaActualizada)throws ExceptionPersona {
         Persona personaBuscada = iTraerPersona.damePersonaSegunDni(personaActualizada.getDni());
+        existePersona(personaBuscada);
         personaBuscada.actualizarDatos(personaActualizada);
         return iModificarPersona.modificarDatos(personaBuscada);
     }
