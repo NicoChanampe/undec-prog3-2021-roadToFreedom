@@ -24,6 +24,7 @@ public class ModificarPersonaCU {
     }
 
     public boolean modificarAlturaPersona(String dni, double nuevaAltura) throws ExceptionPersona{
+        validarDni(dni);
         Persona personaAModificar = iTraerPersona.damePersonaSegunDni(dni);
         existePersona(personaAModificar);
         personaAModificar.actualizarAltura(nuevaAltura);

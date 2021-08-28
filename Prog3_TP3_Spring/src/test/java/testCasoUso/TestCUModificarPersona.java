@@ -158,4 +158,19 @@ public class TestCUModificarPersona {
         //Assert
         assertThrows(ExceptionPersonaDniMalEscrito.class,()-> simulacro.modificarPesoPersona("87.630.115",63.52));
     }
+
+    @Order(10)
+    @Test
+    public void test10_modificarAlturaPersona_dniMalEscrito_excepcionPersonaDniMalEscrito()throws ExceptionPersona{
+        //Arrange
+        LocalDate fechaNacimiento = LocalDate.parse("1999-01-20");
+        Persona nuevaPersona = Persona.factoryPersona(1,"Franco David","Cardozo","Racing",fechaNacimiento,"87630115",1.69,59.7);
+        ModificarPersonaCU simulacro = new ModificarPersonaCU(iTraerPersona,iModificarPersona);
+        //Act
+        Mockito.verify(iTraerPersona,Mockito.never()).damePersonaSegunDni("87.630.115");
+        Mockito.verify(iModificarPersona,Mockito.never()).modificarPeso(nuevaPersona);
+
+        //Assert
+        assertThrows(ExceptionPersonaDniMalEscrito.class,()-> simulacro.modificarAlturaPersona("87.630.115",63.52));
+    }
 }
