@@ -132,4 +132,18 @@ public class TestCUModificarPersona {
         //Assert
         assertThrows(ExceptionPersonaNoEncontrada.class,()-> simulacro.modificarPesoPersona("87630115",63.52));
     }
+
+    @Order(8)
+    @Test
+    public void test08_modificarAlturaPersona_personaNoExiste_excepcionPersonaNoEncontrada()throws ExceptionPersona{
+        //Arrange
+        LocalDate fechaNacimiento = LocalDate.parse("1999-01-20");
+        Persona nuevaPersona = Persona.factoryPersona(1,"Franco David","Cardozo","Racing",fechaNacimiento,"87630115",1.69,59.7);
+        ModificarPersonaCU simulacro = new ModificarPersonaCU(iTraerPersona,iModificarPersona);
+        //Act
+        Mockito.when(iTraerPersona.damePersonaSegunDni("87630115")).thenReturn(null);
+        Mockito.verify(iModificarPersona,Mockito.never()).modificarAltura(nuevaPersona);
+        //Assert
+        assertThrows(ExceptionPersonaNoEncontrada.class,()-> simulacro.modificarAlturaPersona("87630115",1.82));
+    }
 }
