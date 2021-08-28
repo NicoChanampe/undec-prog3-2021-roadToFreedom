@@ -2,7 +2,6 @@ package testCasoUso;
 
 import casosDeUso.ModificarPersonaCU;
 import dominio.Persona;
-import exceptions.exceptionAuto.ExceptionAuto;
 import exceptions.exceptionPersona.*;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
