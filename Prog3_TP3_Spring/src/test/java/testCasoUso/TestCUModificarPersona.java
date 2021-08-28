@@ -4,6 +4,7 @@ import casosDeUso.ModificarPersonaCU;
 import dominio.Persona;
 import exceptions.exceptionPersona.ExceptionPersona;
 import exceptions.exceptionPersona.ExceptionPersonaAlturaErronea;
+import exceptions.exceptionPersona.ExceptionPersonaNoEncontrada;
 import exceptions.exceptionPersona.ExceptionPersonaPesoErroneo;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -115,5 +116,20 @@ public class TestCUModificarPersona {
         Mockito.verify(iModificarPersona,Mockito.never()).modificarAltura(nuevaPersona);
         //Assert
         assertThrows(ExceptionPersonaAlturaErronea.class,()-> simulacro.modificarAlturaPersona("87630115",-1.82));
+    }
+
+    @Order(7)
+    @Test
+    public void test07_modificarPesoPersona_personaNoExiste_excepcionPersonaNoEncontrada()throws ExceptionPersona{
+        //Arrange
+        LocalDate fechaNacimiento = LocalDate.parse("1999-01-20");
+        Persona nuevaPersona = Persona.factoryPersona(1,"Franco David","Cardozo","Racing",fechaNacimiento,"87630115",1.69,59.7);
+        ModificarPersonaCU simulacro = new ModificarPersonaCU(iTraerPersona,iModificarPersona);
+        //Act
+        Mockito.when(iTraerPersona.damePersonaSegunDni("87630115")).thenReturn(null);
+        Mockito.verify(iModificarPersona,Mockito.never()).modificarPeso(nuevaPersona);
+
+        //Assert
+        assertThrows(ExceptionPersonaNoEncontrada.class,()-> simulacro.modificarPesoPersona("87630115",63.52));
     }
 }
