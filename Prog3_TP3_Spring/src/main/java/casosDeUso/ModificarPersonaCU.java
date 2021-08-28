@@ -44,4 +44,10 @@ public class ModificarPersonaCU {
                 throw new ExceptionPersonaDniMalEscrito("El dni ingresado esta mal escrito (solo debe tener numeros)");
         }
     }
+
+    public boolean modificarDatosPersona(Persona personaActualizada) {
+        Persona personaBuscada = iTraerPersona.damePersonaSegunDni(personaActualizada.getDni());
+        personaBuscada.actualizarDatos(personaActualizada);
+        return iModificarPersona.modificarDatos(personaBuscada);
+    }
 }
