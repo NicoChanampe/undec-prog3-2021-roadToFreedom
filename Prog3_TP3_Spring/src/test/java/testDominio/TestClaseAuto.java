@@ -57,17 +57,16 @@ public class TestClaseAuto {
 
     @Order(5)
     @Test
-    public void test04_creacionObjetoAuto_excepcionCantidadInvalida_de_puertas(){
+    public void test05_creacionObjetoAuto_excepcionCantidadInvalida_de_puertas(){
         assertThrows(ExceptionAutoNumeroPuertasInvalido.class, ()-> Auto.factoryAuto(1,"Fiat","147","blanco",1.1,"XTZ 123",6,1996));
     }
 
     @Order(6)
     @Test
-    public void test05_excepcionAuto_añoInvalido(){
+    public void test06_creacionObjetoAuto_excepcionAñoInvalido(){
         assertThrows(ExceptionAutoAñoInvalido.class, ()-> Auto.factoryAuto(1,"Fiat","147","blanco",1.1,"XTZ 123",5,1613));
 
         assertThrows(ExceptionAutoAñoInvalido.class, ()-> Auto.factoryAuto(1,"Fiat","147","blanco",1.1,"XTZ 123",5,4160));
     }
-
 
 }
