@@ -30,7 +30,13 @@ public class TestClaseAuto {
 
         assertThrows(ExceptionAutoAtributoNulo.class, ()-> Auto.factoryAuto(1,"Fiat","147",null,1.1,"XYZ 134",3,1996));
 
+        assertThrows(ExceptionAutoAtributoNulo.class, ()-> Auto.factoryAuto(1,"Fiat","147","Blanco",null,"XYZ 134",3,1996));
+
+        assertThrows(ExceptionAutoAtributoNulo.class, ()-> Auto.factoryAuto(1,"Fiat","147","Blanco",1.1,"XYZ 134",null,1996));
+
         assertThrows(ExceptionAutoAtributoNulo.class, ()-> Auto.factoryAuto(1,"Fiat","147","Blanco",1.1,null,3,1996));
+
+        assertThrows(ExceptionAutoAtributoNulo.class, ()-> Auto.factoryAuto(1,"Fiat","147","Blanco",1.1,"XYZ 134",3,null));
     }
 
     @Order(3)

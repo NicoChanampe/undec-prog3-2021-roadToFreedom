@@ -15,7 +15,7 @@ public class Auto {
     private Integer añoFabricacion;
 
     public static Auto factoryAuto(Integer id,String marca, String modelo, String color, Double cilindrada, String patente, Integer puertas, Integer año)throws ExceptionAuto {
-        if(marca == null)
+        if(marca == null || cilindrada == null || puertas == null || año == null)
             throw new ExceptionAutoAtributoNulo("La marca no puede ser nula");
         if (marca == "")
             throw new ExceptionAutoAtributoVacia("El campo marca no puede quedar vacio");
