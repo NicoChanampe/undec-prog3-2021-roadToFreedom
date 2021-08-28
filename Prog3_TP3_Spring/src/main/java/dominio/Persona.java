@@ -20,10 +20,8 @@ public class Persona {
             throw new ExceptionPersonaAtributoNulo("Los campos apellido, nombre, dni, peso o altura no pueden ser nulos");
         if(dni.equals("") || nombre.equals("") || apellido.equals(""))
             throw new ExceptionPersonaAtributoVacio("Los campos apellido, nombre y dni no pueden estar sin completar");
-        if(dni.length() < 7 || dni.length() > 9)
-            throw new ExceptionPersonaDniMalEscrito("El dni debe tener entre 7 y 9 digitos");
         if(!validarDni(dni))
-            throw new ExceptionPersonaDniMalEscrito("El dni solo debe contener numeros");
+            throw new ExceptionPersonaDniMalEscrito("El dni solo debe contener entre 7 y 9 numeros");
         if(altura <= 0)
             throw new ExceptionPersonaAlturaErronea("Altura ingresada erronea");
         if(peso <= 0)
@@ -33,6 +31,8 @@ public class Persona {
     }
 
     private static boolean validarDni(String dni) {
+        if(dni.length() < 7 || dni.length() > 9)
+            return false;
         for(int i = 0;i<dni.length();i++){
             if(dni.codePointAt(i) < 48 || dni.codePointAt(i) > 57)
                 return false;
