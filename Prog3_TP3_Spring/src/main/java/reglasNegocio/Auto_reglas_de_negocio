@@ -1,0 +1,12 @@
+REGLAS DE NEGOCIO AUTO:
+
+* Los Autos van a tener como atributos id, marca, modelo, color, cilindrada, patente, puertas y año.
+* El unico dato que puede ser vacio es color.
+* Ningun dato puede ser nulo.
+* Cilindrada, puertas y año no pueden ser negativo ni 0.
+* Puerta solo puede tener de valores 3 o 5.
+
+* Se pueden modificar los atributos:
+        + color.
+        + cilindrada.
+* No pueden haber autos con la misma patente.
