@@ -45,13 +45,13 @@ public class TestClaseAuto {
 
     @Order(4)
     @Test
-    public void test04_excepcionAuto_cilindradaNegativa(){
+    public void test04_creacionObjetoAuto_excepcionCilindradaNegativa(){
         assertThrows(ExceptionAutoCilindradaNegativa.class, ()-> Auto.factoryAuto(1,"Fiat","147","blanco",-1.1,"XTZ 123",3,1996));
     }
 
     @Order(5)
     @Test
-    public void test04_excepcionAuto_cantidadInvalida_de_puertas(){
+    public void test04_creacionObjetoAuto_excepcionCantidadInvalida_de_puertas(){
         assertThrows(ExceptionAutoNumeroPuertasInvalido.class, ()-> Auto.factoryAuto(1,"Fiat","147","blanco",1.1,"XTZ 123",6,1996));
     }
 
