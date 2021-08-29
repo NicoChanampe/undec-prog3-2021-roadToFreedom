@@ -69,4 +69,11 @@ public class TestClaseAuto {
         assertThrows(ExceptionAutoAñoInvalido.class, ()-> Auto.factoryAuto(1,"Fiat","147","blanco",1.1,"XTZ 123",5,4160));
     }
 
+    @Order(7)
+    @Test
+    public void test07_actualizarDatosAuto_datosSeActualizan()throws ExceptionAuto{
+        Auto esteAuto = Auto.factoryAuto(1,"Fiat","147","Blanco",1.1,"XYZ 134",3,1996);
+        Auto autoActualizado = Auto.factoryAuto(1,"Fiat","147","Blanco",1.1,"XYZ 134",3,1996);
+    }
+
 }
