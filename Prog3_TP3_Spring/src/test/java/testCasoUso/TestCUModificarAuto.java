@@ -3,6 +3,7 @@ package testCasoUso;
 import casosDeUso.ModificarAutoCU;
 import dominio.Auto;
 import exceptions.exceptionAuto.ExceptionAuto;
+import exceptions.exceptionAuto.ExceptionAutoNoExiste;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -54,5 +55,19 @@ public class TestCUModificarAuto {
 
         //Assert
         assertFalse(simulacroModificacion.actualizarDatos(autoActualizado));
+    }
+
+    @Order(3)
+    @Test
+    public void test03_modificarAuto_autoBuscadoNoExiste_excepcionAutoNoExiste()throws ExceptionAuto {
+        //Arrange
+        Auto autoActualizado = Auto.factoryAuto(1,"Fiat","147","Azul",1.4,"XYZ 134",3,1996);
+        ModificarAutoCU simulacroModificacion = new ModificarAutoCU(iModificarAuto,iTraerAuto);
+        //Act
+        Mockito.when(iTraerAuto.dameAuto(autoActualizado.getPatente())).thenReturn(null);
+        Mockito.verify(iModificarAuto,Mockito.never()).modificarAuto(autoActualizado);
+
+        //Assert
+        assertThrows(ExceptionAutoNoExiste.class, ()-> simulacroModificacion.actualizarDatos(autoActualizado));
     }
 }
