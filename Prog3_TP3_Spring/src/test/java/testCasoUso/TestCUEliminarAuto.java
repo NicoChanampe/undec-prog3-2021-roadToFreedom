@@ -24,7 +24,7 @@ public class TestCUEliminarAuto {
 
     @Order(1)
     @Test
-    public void test01_eliminarPersona_personaSeEliminaSinProblema(){
+    public void test01_eliminarAuto_autoSeEliminaSinProblema(){
         //Arrange
         EliminarAutoCU simulacroEliminacion = new EliminarAutoCU(iEliminarAuto,iBuscarAuto);
 
@@ -34,5 +34,19 @@ public class TestCUEliminarAuto {
 
         //Assert
         assertTrue(simulacroEliminacion.darBajaAuto("XYZ 123"));
+    }
+
+    @Order(2)
+    @Test
+    public void test02_eliminarAuto_fallaBDretornaFalse(){
+        //Arrange
+        EliminarAutoCU simulacroEliminacion = new EliminarAutoCU(iEliminarAuto,iBuscarAuto);
+
+        //Act
+        Mockito.when(iBuscarAuto.buscarAutoByPatente("XYZ 123")).thenReturn(true);
+        Mockito.when(iEliminarAuto.bajameAuto("XYZ 123")).thenReturn(false);
+
+        //Assert
+        assertFalse(simulacroEliminacion.darBajaAuto("XYZ 123"));
     }
 }
