@@ -80,7 +80,7 @@ public class TestClaseAuto {
     public void test08_actualizarDatosAuto_datosSeActualizan()throws ExceptionAuto{
         //Arrange
         Auto esteAuto = Auto.factoryAuto(1,"Fiat","147","Blanco",1.1,"XYZ 134",3,1996);
-        Auto autoActualizado = Auto.factoryAuto(1,"Fiat","147","Blanco",1.1,"XYZ 134",3,1996);
+        Auto autoActualizado = Auto.factoryAuto(1,"Fiat","147","Azul",1.4,"XYZ 134",3,1996);
 
         //Act
         esteAuto.actualizarAuto(autoActualizado);
