@@ -69,7 +69,7 @@ public class TestClaseAuto {
 
     @Order(7)
     @Test
-    public void test07_creacionObjetoAuto_excepcionAñoInvalido(){
+    public void test07_creacionObjetoAuto_excepcionAnioInvalido(){
         assertThrows(ExceptionAutoAñoInvalido.class, ()-> Auto.factoryAuto(1,"Fiat","147","blanco",1.1,"XTZ 123",5,1613));
 
         assertThrows(ExceptionAutoAñoInvalido.class, ()-> Auto.factoryAuto(1,"Fiat","147","blanco",1.1,"XTZ 123",5,4160));
@@ -78,8 +78,16 @@ public class TestClaseAuto {
     @Order(8)
     @Test
     public void test08_actualizarDatosAuto_datosSeActualizan()throws ExceptionAuto{
+        //Arrange
         Auto esteAuto = Auto.factoryAuto(1,"Fiat","147","Blanco",1.1,"XYZ 134",3,1996);
         Auto autoActualizado = Auto.factoryAuto(1,"Fiat","147","Blanco",1.1,"XYZ 134",3,1996);
+
+        //Act
+        esteAuto.actualizarAuto(autoActualizado);
+
+        //Assert
+        assertEquals(autoActualizado.obtenerColor(),esteAuto.obtenerColor());
+        assertEquals(autoActualizado.obtenerCilindrada(),esteAuto.obtenerCilindrada());
     }
 
 }
