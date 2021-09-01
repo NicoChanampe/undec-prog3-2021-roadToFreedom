@@ -90,4 +90,19 @@ public class TestClaseAuto {
         assertEquals(autoActualizado.obtenerCilindrada(),esteAuto.obtenerCilindrada());
     }
 
+    @Order(9)
+    @Test
+    public void test09_actualizarDatosAuto_pasamarcaModelo_y_colorCambiados_colorSeActualiza()throws ExceptionAuto{
+        //Arrange
+        Auto esteAuto = Auto.factoryAuto(1,"Fiat","147","",1.1,"XYZ 134",3,1996);
+        Auto autoActualizado = Auto.factoryAuto(1,"Ferrari","360","Blanco",1.1,"XYZ 134",3,1996);
+
+        //Act
+        esteAuto.actualizarAuto(autoActualizado);
+
+        //Assert
+        assertEquals(autoActualizado.obtenerColor(),esteAuto.obtenerColor());
+        assertEquals("Fiat",esteAuto.obtenerMarca());
+        assertEquals("147",esteAuto.obtenerModelo());
+    }
 }

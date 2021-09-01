@@ -67,6 +67,14 @@ public class Auto {
         this.color = nuevoColor;
     }
 
+    private String getMarca() {
+        return marca;
+    }
+
+    private String getModelo() {
+        return modelo;
+    }
+
     public String obtenerColor() {
         if(color.equals(""))
            return "El auto no tiene color cargado";
@@ -76,4 +84,13 @@ public class Auto {
     public Double obtenerCilindrada() {
         return getCilindrada();
     }
+
+    public String obtenerMarca() {
+        return getMarca();
+    }
+
+    public String obtenerModelo() {
+        return getModelo();
+    }
+
 }
