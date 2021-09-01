@@ -1,6 +1,8 @@
 package testCasoUso;
 
 import casosDeUso.EliminarAutoCU;
+import exceptions.exceptionAuto.ExceptionAuto;
+import exceptions.exceptionAuto.ExceptionAutoNoExiste;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -24,7 +26,7 @@ public class TestCUEliminarAuto {
 
     @Order(1)
     @Test
-    public void test01_eliminarAuto_autoSeEliminaSinProblema(){
+    public void test01_eliminarAuto_autoSeEliminaSinProblema()throws ExceptionAuto{
         //Arrange
         EliminarAutoCU simulacroEliminacion = new EliminarAutoCU(iEliminarAuto,iBuscarAuto);
 
@@ -38,7 +40,7 @@ public class TestCUEliminarAuto {
 
     @Order(2)
     @Test
-    public void test02_eliminarAuto_fallaBDretornaFalse(){
+    public void test02_eliminarAuto_fallaBDretornaFalse()throws ExceptionAuto {
         //Arrange
         EliminarAutoCU simulacroEliminacion = new EliminarAutoCU(iEliminarAuto,iBuscarAuto);
 
@@ -48,5 +50,19 @@ public class TestCUEliminarAuto {
 
         //Assert
         assertFalse(simulacroEliminacion.darBajaAuto("XYZ 123"));
+    }
+
+    @Order(3)
+    @Test
+    public void test03_eliminarAuto_autoNoExisteEnBD_excepcionAutoNoExiste(){
+        //Arrange
+        EliminarAutoCU simulacroEliminacion = new EliminarAutoCU(iEliminarAuto,iBuscarAuto);
+
+        //Act
+        Mockito.when(iBuscarAuto.buscarAutoByPatente("XYZ 123")).thenReturn(false);
+        Mockito.verify(iEliminarAuto,Mockito.never()).bajameAuto("XYZ 123");
+
+        //Assert
+        assertThrows(ExceptionAutoNoExiste.class,()->simulacroEliminacion.darBajaAuto("XYZ 123"));
     }
 }

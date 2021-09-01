@@ -1,5 +1,7 @@
 package casosDeUso;
 
+import exceptions.exceptionAuto.ExceptionAuto;
+import exceptions.exceptionAuto.ExceptionAutoNoExiste;
 import repositorio.IBuscarAuto;
 import repositorio.IEliminarAuto;
 
@@ -12,9 +14,9 @@ public class EliminarAutoCU {
         this.iBuscarAutoCU = iBuscarAuto;
     }
 
-    public boolean darBajaAuto(String patenteABuscar) {
+    public boolean darBajaAuto(String patenteABuscar) throws ExceptionAuto {
         if (!iBuscarAutoCU.buscarAutoByPatente(patenteABuscar))
-            return false;
+            throw new ExceptionAutoNoExiste("La patente ingresada no pertenece a un auto de la BD");
         return iEliminarAutoCU.bajameAuto(patenteABuscar);
     }
 }
