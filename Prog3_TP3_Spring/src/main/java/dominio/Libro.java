@@ -7,10 +7,10 @@ public class Libro {
     private String autor;
     private String editorial;
     private Integer anioEdicion;
-    private Integer paginas;
+    private String paginas;
     private Double precio;
 
-    private Libro(Long id, String isbn, String titulo, String autor, String editorial, Integer anioEdicion, Integer paginas, Double precio) {
+    private Libro(Long id, String isbn, String titulo, String autor, String editorial, Integer anioEdicion, String paginas, Double precio) {
         this.id = id;
         this.isbn = isbn;
         this.titulo = titulo;
@@ -21,7 +21,7 @@ public class Libro {
         this.precio = precio;
     }
 
-    public static Libro factoryLibro(Long id, String isbn, String titulo, String autor, String editorial, Integer anioEdicion, Integer paginas, Double precio) {
+    public static Libro factoryLibro(Long id, String isbn, String titulo, String autor, String editorial, Integer anioEdicion, String paginas, Double precio) {
         return new Libro(id,isbn,titulo,autor,editorial,anioEdicion,paginas,precio);
     }
 }

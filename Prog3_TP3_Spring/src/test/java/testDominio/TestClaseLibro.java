@@ -16,7 +16,9 @@ public class TestClaseLibro {
     @Order(1)
     @Test
     public void test_creacionLibro_datosCorrectosyCompletos_libroCreado(){
-        Libro nuevoLibro = Libro.factoryLibro(1L, "1530-1113-5004-4","Las Crónicas de Narnia: El Principe Caspian", "J. C. Lewis", "LA NACION", 2008,280,650.59);
+        Libro nuevoLibro = Libro.factoryLibro(1L, "1530-1113-5004-4","Las Crónicas de Narnia: El Principe Caspian", "J. C. Lewis", "LA NACION", 2008,"280",650.59);
         assertNotNull(nuevoLibro);
     }
+
+
 }
