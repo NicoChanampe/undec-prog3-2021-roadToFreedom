@@ -2,6 +2,7 @@ package dominio;
 
 import exceptions.exceptionLibro.ExceptionLibro;
 import exceptions.exceptionLibro.ExceptionLibroAtributoNulo;
+import exceptions.exceptionLibro.ExceptionLibroAtributoVacio;
 
 public class Libro {
     private Long id;
@@ -27,6 +28,8 @@ public class Libro {
     public static Libro factoryLibro(Long id, String isbn, String titulo, String autor, String editorial, Integer anioEdicion, String paginas, Double precio) throws ExceptionLibro {
         if(isbn == null || titulo == null || autor == null || editorial == null || anioEdicion == null || paginas == null || precio == null)
             throw new ExceptionLibroAtributoNulo("Ninguno de los campos puede ser nulo");
+        if(isbn.equals(""))
+            throw new ExceptionLibroAtributoVacio("El campo isbn debe de estar completo");
         if(paginas.equals("0"))
             paginas = "No descrito";
         if(autor.equals(""))

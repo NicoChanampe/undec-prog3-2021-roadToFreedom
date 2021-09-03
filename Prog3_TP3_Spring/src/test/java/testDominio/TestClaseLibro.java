@@ -3,6 +3,7 @@ package testDominio;
 import dominio.Libro;
 import exceptions.exceptionLibro.ExceptionLibro;
 import exceptions.exceptionLibro.ExceptionLibroAtributoNulo;
+import exceptions.exceptionLibro.ExceptionLibroAtributoVacio;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -62,5 +63,11 @@ public class TestClaseLibro {
         assertThrows(ExceptionLibroAtributoNulo.class,()->Libro.factoryLibro(1L, "1530-1113-5004-4","Claves para aprobar programacion 3", "", "UNdeC", 2021,null,430.69));
 
         assertThrows(ExceptionLibroAtributoNulo.class,()->Libro.factoryLibro(1L, "1530-1113-5004-4","Claves para aprobar programacion 3", "", "UNdeC", 2021,"125",null));
+    }
+
+    @Order(6)
+    @Test
+    public void test06_creacionLibro_isbnVacio_exceptionLibroAtributoVacio(){
+        assertThrows(ExceptionLibroAtributoVacio.class,()-> Libro.factoryLibro(1L, "","Claves para aprobar programacion 3", "", "UNdeC", 2021,"125",430.69));
     }
 }
