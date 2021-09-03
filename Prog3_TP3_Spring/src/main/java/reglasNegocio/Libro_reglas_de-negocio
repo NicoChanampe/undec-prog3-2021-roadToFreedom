@@ -3,7 +3,7 @@ REGLAS DE NEGOCIO LIBRO:
 * Los libros van a tener como atributos id, isbn, titulo, autor, editorial, año de edicion, paginas, precio.
 * Se va a poder no cargar el precio.
 * La cantidad de paginas puede ser cero.
-* Los identifican univocamente por el isbn.
+* Los libros se identifican univocamente por el isbn.
 * Si el año de edicion es mayor a 1970 el isbn debe tener 13 digitos. Sino entre 12 a 10 digitos. (SIN CONTAR GUIONES)
 * Ningun dato puede ser nulo.
 * Se pueden modificar los atributos:
