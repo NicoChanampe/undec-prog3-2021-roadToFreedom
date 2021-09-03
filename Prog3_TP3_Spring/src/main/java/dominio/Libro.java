@@ -22,6 +22,16 @@ public class Libro {
     }
 
     public static Libro factoryLibro(Long id, String isbn, String titulo, String autor, String editorial, Integer anioEdicion, String paginas, Double precio) {
+        if(paginas.equals("0"))
+            paginas = "No descrito";
         return new Libro(id,isbn,titulo,autor,editorial,anioEdicion,paginas,precio);
+    }
+
+    public String obtenerCantidadPaginas() {
+        return getPaginas();
+    }
+
+    private String getPaginas() {
+        return paginas;
     }
 }
