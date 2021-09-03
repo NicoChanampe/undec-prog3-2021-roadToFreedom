@@ -1,5 +1,8 @@
 package dominio;
 
+import exceptions.exceptionLibro.ExceptionLibro;
+import exceptions.exceptionLibro.ExceptionLibroAtributoNulo;
+
 public class Libro {
     private Long id;
     private String isbn;
@@ -21,7 +24,9 @@ public class Libro {
         this.precio = precio;
     }
 
-    public static Libro factoryLibro(Long id, String isbn, String titulo, String autor, String editorial, Integer anioEdicion, String paginas, Double precio) {
+    public static Libro factoryLibro(Long id, String isbn, String titulo, String autor, String editorial, Integer anioEdicion, String paginas, Double precio) throws ExceptionLibro {
+        if(isbn == null || titulo == null || autor == null || editorial == null || anioEdicion == null || paginas == null || precio == null)
+            throw new ExceptionLibroAtributoNulo("Ninguno de los campos puede ser nulo");
         if(paginas.equals("0"))
             paginas = "No descrito";
         if(autor.equals(""))
@@ -29,7 +34,7 @@ public class Libro {
         return new Libro(id,isbn,titulo,autor,editorial,anioEdicion,paginas,precio);
     }
 
-    public static Libro factoryLibro(Long id, String isbn, String titulo, String autor, String editorial, Integer anioEdicion, String paginas) {
+    public static Libro factoryLibro(Long id, String isbn, String titulo, String autor, String editorial, Integer anioEdicion, String paginas) throws ExceptionLibro{
         return factoryLibro(id,isbn,titulo,autor,editorial,anioEdicion,paginas,0.0);
     }
 
