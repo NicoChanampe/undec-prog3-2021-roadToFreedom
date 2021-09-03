@@ -35,4 +35,12 @@ public class TestClaseLibro {
         assertNotNull(nuevoLibro);
         assertEquals(0.0,nuevoLibro.obtenerPrecio());
     }
+
+    @Order(4)
+    @Test
+    public void test04_creacionLibro_autorVacio_libroCreado(){
+        Libro nuevoLibro = Libro.factoryLibro(1L, "1530-1113-5004-4","Claves para aprobar programacion 3", "", "UNdeC", 2021,"125",430.69);
+        assertNotNull(nuevoLibro);
+        assertEquals("Sin autor",nuevoLibro.obtenerAutor());
+    }
 }
