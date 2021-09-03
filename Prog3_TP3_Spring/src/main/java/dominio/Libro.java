@@ -27,11 +27,23 @@ public class Libro {
         return new Libro(id,isbn,titulo,autor,editorial,anioEdicion,paginas,precio);
     }
 
+    public static Libro factoryLibro(Long id, String isbn, String titulo, String autor, String editorial, Integer anioEdicion, String paginas) {
+        return factoryLibro(id,isbn,titulo,autor,editorial,anioEdicion,paginas,0.0);
+    }
+
     public String obtenerCantidadPaginas() {
         return getPaginas();
     }
 
+    public Double obtenerPrecio() {
+        return getPrecio();
+    }
+
     private String getPaginas() {
         return paginas;
+    }
+
+    private Double getPrecio() {
+        return precio;
     }
 }

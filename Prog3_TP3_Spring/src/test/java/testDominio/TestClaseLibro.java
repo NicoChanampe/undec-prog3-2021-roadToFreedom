@@ -15,16 +15,24 @@ import static org.junit.jupiter.api.Assertions.*;
 public class TestClaseLibro {
     @Order(1)
     @Test
-    public void test_creacionLibro_datosCorrectosyCompletos_libroCreado(){
+    public void test01_creacionLibro_datosCorrectosyCompletos_libroCreado(){
         Libro nuevoLibro = Libro.factoryLibro(1L, "1530-1113-5004-4","Las Crónicas de Narnia: El Principe Caspian", "J. C. Lewis", "LA NACION", 2008,"280",650.59);
         assertNotNull(nuevoLibro);
     }
 
     @Order(2)
     @Test
-    public void test_creacionLibro_paginaIgualACero_libroCreado(){
+    public void test02_creacionLibro_paginaIgualACero_libroCreado(){
         Libro nuevoLibro = Libro.factoryLibro(1L, "1530-1113-5004-4","Las Crónicas de Narnia: El Principe Caspian", "J. C. Lewis", "LA NACION", 2008,"0",650.59);
         assertNotNull(nuevoLibro);
         assertEquals("No descrito",nuevoLibro.obtenerCantidadPaginas());
+    }
+
+    @Order(3)
+    @Test
+    public void test03_creacionLibro_sinPrecio_libroCreado(){
+        Libro nuevoLibro = Libro.factoryLibro(1L, "1530-1113-5004-4","Las Crónicas de Narnia: El Principe Caspian", "J. C. Lewis", "LA NACION", 2008,"0");
+        assertNotNull(nuevoLibro);
+        assertEquals(0.0,nuevoLibro.obtenerPrecio());
     }
 }
