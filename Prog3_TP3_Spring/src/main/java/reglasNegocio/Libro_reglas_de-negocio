@@ -13,3 +13,4 @@ REGLAS DE NEGOCIO LIBRO:
         + precio.
 * El precio y la cantidad de paginas no puede ser negativo.
 * El autor puede ir vacio (de estar vacio colocar "Sin autor").
+* El año de edicion no puede ser mayor al año actual
